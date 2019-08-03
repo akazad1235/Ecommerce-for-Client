@@ -1,0 +1,32 @@
+<?php include('inc/header.php')?>
+            <!-- end Topbar -->
+<?php include('inc/leftsideber.php')?>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                               kjlsdkfjlskdj
+
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+<?php include('inc/footer.php')?>
+
+
+                                
