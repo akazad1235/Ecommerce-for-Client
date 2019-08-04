@@ -29,3 +29,6 @@ a:not([href]):not([tabindex]) {
         color: #fff;
         text-decoration: none;
     }
+.btn{
+        cursor: pointer
+}

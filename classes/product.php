@@ -2,9 +2,6 @@
     <!-- style add for success or other message -->
 <link href="assests/css/style.css" rel="stylesheet" />
 </head>
-<?php  //$filepath= realpath(dirname(__FILE__));?>
-<?php //include_once($filepath.'../../../lib/database.php');?>
-<?php //include_once($filepath.'../../../config/config.php');?>
 <?php
  include_once('../lib/database.php');
  include_once('../config/config.php');
@@ -77,7 +74,21 @@
                     }
                     }  
                             
-                    }         
+                    }   
+            //get all product 
+            public function getAllProduct(){
+                $query="SELECT tbl_product.*, tbl_category.cat_name, tbl_brand.brand_name from tbl_product 
+                INNER JOIN tbl_category 
+                on tbl_product.cat=tbl_category.catId
+                INNER JOIN tbl_brand
+                on tbl_brand.id=tbl_product.brandId
+                order by tbl_product.id desc"; 
+                $result=$this->db->select($query);
+               return $result;
+            }  
+                    
+
+
                     }
       
     

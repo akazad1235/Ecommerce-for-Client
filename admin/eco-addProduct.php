@@ -5,6 +5,13 @@
 <?php include("../classes/product.php")?>
 <?php include("../classes/category.php")?>
 <?php include("../classes/brand.php")?>
+<?php
+//autoload all classes from classes folder
+function __autoload($class_name){
+    include("../classes/".$class_name.".php");
+}
+?>
+
 <?php $product = new Product()?>
 <?php $getCat = new Category()?>
 <?php $getBrand = new Brand()?>

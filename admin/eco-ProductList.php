@@ -2,8 +2,20 @@
             <!-- end Topbar -->
 <?php include('inc/leftsideber.php')?>
             <!-- Left Sidebar End -->
-<?php include('../classes/category.php')?>
-<?php $catList=new Category();?>
+<?php
+//autolaod all classes from classes folder
+ function __autoload($class_name){
+    include("../classes/".$class_name.".php");
+    include("../helpers/".$class_name.".php");
+} 
+
+?>
+<?php
+//create object from product classes
+$productList = new Product();
+$fm = new Format();
+
+?>
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
@@ -38,19 +50,31 @@
                           
                         <tbody>
                          
-                               
+                           <?php
+                           $getAllProduct=$productList->getAllProduct();
+                           //echo $getAllProduct;
+                           if ($getAllProduct) {
+                                $i=1;
+                               while ($row = $getAllProduct->fetch_assoc()) {?>
+                                   
+                              
                             <tr>
-                                <td>1</td>
-                                <td>Samsung Phone</td>
-                                <td>phone</td>
-                                <td>Samsung</td>
-                                <td>sdfsdfsf</td>
-                                <td>core 4</td>
-                                <td>ikmage</td>
-                                <td>ikmage</td>
+                                <td><?php echo $i++ ?></td>
+                                <td><?php echo $row['product_name']?></td>
+                                <td><?php echo $row['cat_name']?></td>
+                                <td><?php echo $row['brand_name']?></td>
+                                
+                                <td><?php echo $fm->sortText($row['description'],20)?></td>
+                                <td>$<?php echo $row['price']?></td>
+                                <td><img width='60px' height='60px' src="<?php echo $row['image']?>" /></td>
+                                <td ><?php echo $row['tages']?></td>
                                 <td>azad</td> 
                                 <td><a  class="btn btn-success">Active</a> <a class="btn btn-info" >Eidt</a> <a onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
                             </tr>
+                            <?php }
+                           }
+                           ?>    
+
                         </tbody>
                     
                     </table>

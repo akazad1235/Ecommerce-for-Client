@@ -58,7 +58,7 @@
             } */
         }
 
-       public function  getAllBrandlist(){
+       public function getAllBrandlist(){
            $query="SELECT * FROM tbl_brand";
            $result=$this->db->select($query);
            return $result;
