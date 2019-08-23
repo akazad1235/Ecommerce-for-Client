@@ -10,7 +10,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Tyrion</title>
+    <title>BdShop</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"/>
 
@@ -183,7 +183,7 @@
 
                             <strong class="logo">
 
-                                <a href="#"><img src="assets/images/logo.jpg" alt="logo"></a>
+                                <a href="index.php"><img src="assets/images/logo.jpg" alt="logo"></a>
 
                             </strong><!-- logo -->
 
@@ -726,19 +726,19 @@
 
                                         <ul class="submenu parent-megamenu">
                                             <li class="menu-item">
-                                                <a href="grid-product.html">Grid Product</a>
+                                                <a href="grid-product.php">Grid Product</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="list-product.html">List Product</a>
+                                                <a href="list-product.php">List Product</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="list-product-right.html">List Product Right</a>
+                                                <a href="list-product-right.php">List Product Right</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="grid-product-right.html">Grid Product Right</a>
+                                                <a href="grid-product-right.php">Grid Product Right</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="detail.html">Detail Product</a>
+                                                <a href="detail.php">Detail Product</a>
                                             </li>
                                         </ul>
 
@@ -752,16 +752,16 @@
 
                                         <ul class="submenu parent-megamenu">
                                             <li class="menu-item">
-                                                <a href="checkout.html">Checkout</a>
+                                                <a href="checkout.php">Checkout</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="shopping-cart.html">Shopping Cart</a>
+                                                <a href="shopping-cart.php">Shopping Cart</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="contact-us.html">Contact Us</a>
+                                                <a href="contact-us.php">Contact Us</a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="login.html">Login</a>
+                                                <a href="login.php">Login</a>
                                             </li>
                                         </ul>
 

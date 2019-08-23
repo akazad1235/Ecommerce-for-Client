@@ -1,10 +1,15 @@
+<?php
+ob_start();
+include_once('../lib/session.php');
+Session::checkSession();
+?>
 <!DOCTYPE html>
 <html lang="en">
     
 <!-- Mirrored from coderthemes.com/ubold/layouts/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 12 Jul 2019 13:24:47 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>UBold - Responsive Admin Dashboard Template</title>
+        <title>Bdshop - Responsive Admin Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -139,12 +144,11 @@
 
                         </div>
                     </li>
-
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                Geneva <i class="mdi mdi-chevron-down"></i> 
+                                <?php echo Session::get('adminUser')?> <i class="mdi mdi-chevron-down"></i> 
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -170,11 +174,15 @@
                                 <i class="fe-lock"></i>
                                 <span>Lock Screen</span>
                             </a>
-
+                            <?php
+                            if (isset($_GET['action']) && $_GET['action']=="logout") {
+                                Session::destory();
+                            }
+                            ?>
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="?action=logout" class="dropdown-item notify-item">
                                 <i class="fe-log-out"></i>
                                 <span>Logout</span>
                             </a>
@@ -193,7 +201,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-box">
-                    <a href="index.html" class="logo text-center">
+                    <a href="index.php" class="logo text-center">
                         <span class="logo-lg">
                             <img src="assets/images/logo-light.png" alt="" height="18">
                             <!-- <span class="logo-lg-text-light">UBold</span> -->

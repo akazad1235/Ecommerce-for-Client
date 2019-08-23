@@ -7,7 +7,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-
+                           
             <div class="content-page">
                 <div class="content">
 
@@ -49,13 +49,24 @@
                                 <td id="status-text-inactive">Inactive</td>
                                 <?php }
                                 ?> 
-                                <td><a  class="btn btn-info">Edit</a> <a onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
+                              
+                                <td><a  class="btn btn-info">Edit</a> <a href="?delId=<?php echo $row['catId']?>" onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
                             </tr>
 
                                  
                                 <?php }
                             }
                             ?>
+                            <?php
+                            //catagory delete process
+                            //category delete get id
+                            if (isset($_GET['delId'])) {
+                                $id=$_GET['delId'];
+                            
+                            $catDlt = $catList->catDelete($id);
+                            echo $catDlt;
+                            }
+                            ?> 
                          
                         </tbody>
                     

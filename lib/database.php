@@ -15,7 +15,7 @@
 		 }
 		 //db connect
          private function connectdb(){
-			 $this->link	= new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+			 $this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
 			 
          	if(!$this->link){
              $this->error =  "database connection faild".$this->link->connection_error;

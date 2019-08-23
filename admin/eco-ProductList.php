@@ -6,7 +6,6 @@
 //autolaod all classes from classes folder
  function __autoload($class_name){
     include("../classes/".$class_name.".php");
-    include("../helpers/".$class_name.".php");
 } 
 
 ?>
@@ -69,7 +68,24 @@ $fm = new Format();
                                 <td><img width='60px' height='60px' src="<?php echo $row['image']?>" /></td>
                                 <td ><?php echo $row['tages']?></td>
                                 <td>azad</td> 
-                                <td><a  class="btn btn-success">Active</a> <a class="btn btn-info" >Eidt</a> <a onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
+                                <td>
+                                <?php
+                                if ($row['status']==0) {?>
+                                    <a  class="btn btn-success">Active</a>
+                                <?php
+                                 }
+                                else{?>
+                                    <a class="btn btn-danger">Inactive</a>
+                                <?php
+                                }
+                                ?>
+                                <?php 
+                                if(isset($_GET['proDltId'])){
+                                    $delId=$_GET['proDltId'];
+                                    $delProduct=$productList->deleteProduct($delId);
+                                }
+                                ?>
+                                <a href="eco-productEdit.php?editProId=<?php echo $row['id']?>" class="btn btn-info" >Eidt</a> <a href="?proDltId=<?php echo $row['id']?>" onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
                             </tr>
                             <?php }
                            }

@@ -7,6 +7,7 @@
 <?php //include_once($filepath.'../../../config/config.php');?>
 <?php
  include_once('../lib/database.php');
+ include_once('../helpers/format.php');
  include_once('../config/config.php');
 ?>
 
@@ -15,16 +16,18 @@
     class Category{
 
         private $db;
-        //private $fm;
+        private $fm;
 
         public function __construct()
         {
             $this->db=new Database();
-           // $this->fm=new Format();
+            $this->fm=new Format();
 
         }
 
         public function addCategory($name){
+            $name=$this->fm->validation($name);
+            $name=mysqli_real_escape_string($this->db->link,  $name);
             if (empty($name)) {
                 $alrtMsg="<span class='alrtMsg'> Category Name Must Not be Empty<span>";
                 return $alrtMsg;
@@ -49,7 +52,7 @@
         }
 
         public function catList(){
-            $query="SELECT * FROM tbl_category";
+            $query="SELECT * FROM tbl_category ";
             $catResult=$this->db->select($query);
             return $catResult;
             /* if (!$catResult) {
@@ -63,5 +66,21 @@
            $result=$this->db->select($query);
            return $result;
        }
+
+       //create for category delete method
+       public function catDelete($id){
+            $query="ALTER TABLE tbl_category
+            DROP  $id ";
+            $result=$this->db->delete($query);
+            if ($result) {
+                $successMsg="Category Delete Success";
+                return $successMsg;
+            }else{
+                $erroMsg="Category Delete Faild";
+                return  $erroMsg;
+            }
+       }
+    
     }
+    //category class end
     ?>

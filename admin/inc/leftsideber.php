@@ -154,11 +154,12 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                   
                                     <li>
-                                        <a href="eco-addProduct.php">Add Brand</a>
+                                        <a href="eco-addProduct.php">Add Product</a>
                                     </li>
                                     <li>
-                                        <a href="eco-ProductList.php">Brand List</a>
+                                        <a href="eco-ProductList.php">Product  List</a>
                                     </li>
+                                    
                                 </ul>
                             </li>
 
