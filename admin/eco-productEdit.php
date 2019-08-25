@@ -5,14 +5,19 @@
 <?php
 if (isset($_GET['editProId'])) {
     $id=$_GET['editProId'];
+    echo $id;
 }
 ?>
+
 <?php
 //autoload all classes from classes folder
-function __autoload($class_name){
+/* function __autoload($class_name){
     include("../classes/".$class_name.".php");
-}
+} */
 ?>
+<?php include('../classes/products.php')?>
+<?php include('../classes/category.php')?>
+<?php include('../classes/brand.php')?>
 
 <?php $product = new Product()?>
 <?php $getCat = new Category()?>

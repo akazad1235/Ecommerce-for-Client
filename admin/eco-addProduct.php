@@ -2,33 +2,31 @@
             <!-- end Topbar -->
 <?php include('inc/leftsideber.php')?>
             <!-- Left Sidebar End -->
-<?php include("../classes/product.php")?>
-<?php include("../classes/category.php")?>
-<?php include("../classes/brand.php")?>
-<?php
-//autoload all classes from classes folder
-function __autoload($class_name){
-    include("../classes/".$class_name.".php");
-}
-?>
-
-<?php $product = new Product()?>
-<?php $getCat = new Category()?>
-<?php $getBrand = new Brand()?>
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-            <div class="content-page">
+<head> <!-- style add for success or other message -->
+<link href="assests/css/style.css" rel="stylesheet" />
+</head>
+<?php include('../classes/products.php')?>
+<?php include('../classes/category.php')?>
+<?php include('../classes/brand.php')?>
+<?php $pd=new Product()?>
+<?php $getCat=new Category()?>
+<?php $getBrand=new Brand()?>
+
+                <div class="content-page">
                 <div class="content">
                     <!-- Start Content-->
                     <div class="container-fluid">
-  <?php
-    
-    if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['submit'])) {
-        $addproduct = $product->addProduct($_POST,$_FILES);
-        echo $addproduct;
-        }
-  ?>                    
+                    <?php
+                   
+
+            if (isset($_POST['submit'])) {
+            $addPD=$pd->addProduct($_POST, $_FILES);
+            echo $addPD;
+            }
+?>                  
                     <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
@@ -123,7 +121,7 @@ function __autoload($class_name){
                     </div> <!-- container -->
 
                 </div> <!-- content -->
-
+                                    -->
 <?php include('inc/footer.php')?>
 <!-- Load TinyMCE -->
 	<script>

@@ -1,4 +1,5 @@
-<?php //include('../config/config.php')?>
+<?php  $filepath=realpath(dirname(__FILE__));?>
+<?php include($filepath.'/../config/config.php')?>
 <?php
  class Database{
 
@@ -35,15 +36,14 @@
          }
 
 //insert 
-         public function insert($query){
-         	$create= $this->link->query($query) or die ($this->link->error.__LINE__);
-         	if($create){
-			return $create;
-			}else{
-				return false;
-
-			}
-         }
+				public function insert($query){
+					$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__);
+					if ($insert_row) {
+						return true;
+					}else{
+						return false;   
+					}
+				}
 
              public function update($query){
          	$update= $this->link->query($query) or die ($this->link->error.__LINE__);

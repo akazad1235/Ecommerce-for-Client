@@ -80,7 +80,23 @@
                 return  $erroMsg;
             }
        }
-    
+       //categoy name select method for category update
+       public function upCatSelect($id){
+           $query="SELECT * FROM tbl_category where catId='$id'";
+           $result=$this->db->select($query);
+           return $result;
+       
+    }
+        //create method for update category
+        public function updateCategory($name, $id){
+            $name=$_POST['name'];
+            $query="UPDATE  tbl_category set cat_name='$name' where catId='$id'";
+            $result=$this->db->update($query);
+            return $result;
+        }
+
+
+      
     }
     //category class end
     ?>

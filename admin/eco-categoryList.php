@@ -50,7 +50,7 @@
                                 <?php }
                                 ?> 
                               
-                                <td><a  class="btn btn-info">Edit</a> <a href="?delId=<?php echo $row['catId']?>" onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
+                                <td><a href="eco-categoryEdit.php?id=<?php echo $row['catId']?>" class="btn btn-info">Edit</a> <a href="?delId=<?php echo $row['catId']?>" onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
                             </tr>
 
                                  

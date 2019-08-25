@@ -4,11 +4,13 @@
             <!-- Left Sidebar End -->
 <?php
 //autolaod all classes from classes folder
- function __autoload($class_name){
+ /* function __autoload($class_name){
     include("../classes/".$class_name.".php");
-} 
+}  */
 
 ?>
+<?php include('../classes/products.php')?>
+<?php include('../helpers/format.php')?>
 <?php
 //create object from product classes
 $productList = new Product();
