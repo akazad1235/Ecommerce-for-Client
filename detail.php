@@ -1,10 +1,16 @@
 <?php include('inc/header.php')?>
 <!-- end HEADER -->		
-
-
+<?php include("classes/products.php")?>
+<?php include("classes/category.php")?>
+<?php $pd=new Product()?>
+<?php $ct=new Category()?>
+<?php
+if (isset($_GET['proDetaildId'])) {
+    $detailsId=$_GET['proDetaildId'];
+}
+?>
 
 		<!-- MAIN -->
-
 		<main class="site-main">
 
             <div class="container">
@@ -24,14 +30,19 @@
                 <div class="product-content-single">
 
                     <div class="row">
-
+                <?php
+                $proDetails=$pd->singleProductDetails($detailsId);
+                if ($proDetails) {
+                    while ($row=$proDetails->fetch_assoc()) {?>
+                        
+                  
                         <div class="col-md-4 col-sm-12 padding-right">
 
                             <div class="product-media">
 
                                 <div class="image-preview-container image-thick-box image_preview_container">
 
-                                    <img id="img_zoom" data-zoom-image="assets/images/detail/thick-box-1.jpg" src="assets/images/detail/thick-box.jpg" alt="">
+                                    <img id="img_zoom" data-zoom-image="admin/<?php echo $row['image']?>" src="admin/<?php  echo $row['image']?>" alt="">
 
                                     <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
 
@@ -41,9 +52,9 @@
 
                                     <div id="thumbnails" class="thumbnails_carousel owl-carousel nav-style4" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":5},"600":{"items":5},"1000":{"items":5}}'>
 
-                                        <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
+                                        <a href="#" data-image="admin/<?php echo $row['image']?>" data-zoom-image="admin/<?php echo $row['image']?>">
 
-                                            <img src="assets/images/detail/i1.jpg" data-large-image="assets/images/detail/thick-box-1.jpg" alt="i1">
+                                            <img src="admin/<?php echo $row['image']?>" data-large-image="admin/<?php echo $row['image']?>" alt="i1">
 
                                         </a>
                                         <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
@@ -74,12 +85,20 @@
                             </div>
 
                         </div>
+                        <?php
+                    }
+                }
+                ?>
+                     <?php
+                $proDetails=$pd->singleProductDetails($detailsId);
+                if ($proDetails) {
+                    while ($row=$proDetails->fetch_assoc()) {?>
 
                         <div class="col-md-5 col-sm-6">
 
                             <div class="product-info-main">
 
-                                <div class="product-name"><a href="#">UHD 22-inch Screen lit Monitorss Burds</a></div>
+                                <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
 
                                 <span class="star-rating">
 
@@ -99,18 +118,14 @@
 
                                 <div class="product-infomation">
 
-                                    22” class screen full LED TV<br>
-
-                                    Hight precision lens provides a clearer picture and a better view.<br>
-
-                                    With stand: 50.23”W x 30.1”H x 15.5”D<br>
-
-                                    Dispay type: Resolution: 1170 x 768<br>
-
-                                    Motion Rate: 130
+                                    <?php echo $row['sort_description']?>
 
                                 </div>
-
+                                <div class="product-id" style="margin-bottom:20px">
+                                    <p style="font-size:20px">Prodcut Id: <span style="color:red"><?php echo $row['product_id']?><span></p>
+                            </p>
+                                </div>
+                                
                                 <div class="group-btn-share">
 
                                     <a href="#"><img src="assets/images/detail/btn1.png" alt="btn1"></a>
@@ -122,14 +137,16 @@
 
                                 <div class="product-description">
 
-                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 making it over 2000 years old.
+                                <?php
+                                        echo $row['tages'];
+                                        ?>
 
                                 </div>
 
                             </div>
 
                         </div>
-
+                     
                         <div class="col-md-3 col-sm-6">
 
                             <div class="product-info-price">
@@ -138,7 +155,15 @@
 
                                     <div class="stock available">
 
-                                        <span class="label-stock">Availability: </span>In Stock
+                                        <span class="label-stock">Availability: </span>
+                                        <?php
+                                        //avaiable product status
+                                       if ($row['available_status']==0) {
+                                           echo "In Stock";
+                                       }else{
+                                           echo "Out of Stock";
+                                       }
+                                        ?>
 
                                     </div>
 
@@ -149,10 +174,16 @@
                                     <span>item with Free Delivery</span>
 
                                 </div>
+                                <div class="transportation">
+
+                                    <span>Cash of Delivery</span>
+
+                                </div>
+                                
 
                                 <span class="price">
 
-                                    <ins>$229.00</ins>
+                                    <ins>$<?php echo $row['price']?></ins>
 
                                     <del>$259.00</del>
 
@@ -187,6 +218,7 @@
                             </div>
 
                         </div>
+                      
 
                     </div>
 
@@ -214,11 +246,7 @@
 
                             <div class="box-content">
 
-                                <p>Lorem ipsum dolor sit amet, an munere tibique consequat mel, congue albucius no qui, at everti meliore erroribus sea. Vero graeco cotidieque ea duo, in eirmod insolens interpretaris nam. Pro at nostrud percipit definitiones, eu tale porro cum. Sea ne accusata voluptatibus. Ne cum falli dolor voluptua, duo ei sonet choro facilisis, labores officiis torquatos cum ei.</p>
-
-                                <p>Cum altera mandamus in, mea verear disputationi et. Vel regione discere ut, legere expetenda ut eos. In nam nibh invenire similique. Atqui mollis ea his, ius graecis accommodare te. No eam tota nostrum cotidieque. Est cu nibh clita. Sed an nominavi, et duo corrumpit constituto, duo id rebum lucilius. Te eam iisque deseruisse, ipsum euismod his at. Eu putent habemus voluptua sit, sit cu rationibus scripserit, modus voluptaria ex per. Aeque dicam consulatu eu his, probatus neglegentur disputationi sit et. Ei nec ludus epicuri petentium, vis appetere maluisset ad. Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel eu sumo tritani. Cum ex minim legere.</p>
-
-                                <p>Eos cu utroque inermis invenire, eu pri alterum antiopam. Nisl erroribus definitiones nec an, ne mutat scripserit est. Eros veri ad pri. An soleat maluisset per. Has eu idque similique, et blandit scriptorem necessitatibus mea. Vis quaeque ocurreret ea.cu bus scripserit, modus voluptaria ex per. Aeque dicam consulatu eu his, probatus neentur disputationi sit et. Ei nec ludus epicuri petentium, vis appetere maluisset ad. Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel eu sumo tritani.</p>
+                                <?php echo $row['description']?>
 
                             </div>
 
@@ -228,13 +256,7 @@
 
                             <div class="box-content">
 
-                                <p>ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non nulla ullamcorper, interdum dolor vel, dictum justo. Vivamus finibus lorem id auctor
-
-                                    placerat. Ut fermentum nulla lectus, in laoreet metus ultrices ac. Integer eleifend urna ultricies enim facilisis, vel fermentum eros porta.
-
-                                </p>
-
-                                <span>Weights & Dimensions</span>
+                            <?php echo $row['specifications']?>
 
                                 <div class="parameter">
 
@@ -311,6 +333,12 @@
                 </div> 
 
             </div>
+
+            <?php
+                    }
+                }
+                ?>
+
 
             <div class="block-recent-view">
 

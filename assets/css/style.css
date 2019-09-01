@@ -4410,9 +4410,7 @@ input[type=password] {
 	padding: 10px;
 	
 }
-.product-item.style1 .thumb-inner a img{
-	height: 200px;
-}
+
 .product-item.style1 .onsale,
 .product-item.style1 .onnew {
 	
@@ -8682,7 +8680,7 @@ label.inline {
 	
 	border-right: 1px solid #e6e6e6;
 	
-	display: inline-block;
+	
 	
 }
 .products-grid .product-item.style1:nth-child(4n+1) {

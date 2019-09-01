@@ -1,9 +1,4 @@
-<?php include ('lib/database.php'); ?>
-<?php include ('config/config.php'); ?>
-
-    <?php
-           $db = new database();      
-       ?>              
+              
                    <div class="col-md-3 col-sm-4">
 
                         <div class="col-sidebar">
@@ -17,31 +12,19 @@
                                     <div class="filter-options-item filter-categori">
 
                                         <div class="filter-options-title">Categories</div>
-                                        <?php
-                                        $query='SELECT * FROM tbl_category';
-                                        $result=$db->select($query);
-                                        if (!$result) {
-                                            echo"data select faild";
-                                        }else{
-                                            while ($row=$result->fetch_assoc()) {?>
-                                                
-                                        
+ 
                                         <div class="filter-options-content">
 
                                             <ul>
 
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span><?php echo $row['cat_name'] ?></label></li>
+                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Laptop</label></li>
 
                                                
 
                                             </ul>
 
                                         </div>
-                                        <?php
-                                         }
-                                        }
-                                        
-                                        ?>
+                                      
                                     </div>
 
                                     <div class="filter-options-item filter-brand">
@@ -223,7 +206,6 @@
 
                                                 </div>
                                             </div>
-                                            
                                             <div class="product-item style1">
 
                                                 <div class="product-inner">
@@ -270,7 +252,6 @@
 
                                                 </div>
                                             </div>
-                                           
                                             <div class="product-item style1">
 
                                                 <div class="product-inner">

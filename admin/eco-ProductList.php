@@ -20,7 +20,7 @@ $fm = new Format();
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-
+          
             <div class="content-page">
                 <div class="content">
 
@@ -31,7 +31,7 @@ $fm = new Format();
                         <div class="row">
                             <div class="col-12">
                             <div class="page-header bg-secondary text-white">
-                            <h2>All Category List</h2>      
+                            <h2>All Category List</h2>     
                             </div>
                             <table id="example" class="display nowrap" style="width:100%">
 					 <thead>
@@ -68,7 +68,7 @@ $fm = new Format();
                                 <td><?php echo $fm->sortText($row['description'],20)?></td>
                                 <td>$<?php echo $row['price']?></td>
                                 <td><img width='60px' height='60px' src="<?php echo $row['image']?>" /></td>
-                                <td ><?php echo $row['tages']?></td>
+                                <td > <a href="" data-toggle="modal" data-target="#addPage">info</a></td>
                                 <td>azad</td> 
                                 <td>
                                 <?php
@@ -104,6 +104,8 @@ $fm = new Format();
 
                 </div> <!-- content -->
 
+            
+     
 <?php include('inc/footer.php')?>
 
 <script type="text/javascript">
@@ -111,4 +113,40 @@ $(document).ready( function () {
     $('#example').DataTable();
 });
 </script>
-
+     <!-- start modal -->
+     <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-xl" role="document">
+	  <form>
+		<div class="modal-content">
+		  <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Product Details</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			
+		  </div>
+		  <div class="modal-body">
+			 <div class="form-group">
+				<label for="pagetitle">Product Name</label>
+				<input type="text" class="form-control" id="addPage" placeholder="Page Title">
+			  </div>
+			  <div class="form-group">
+				<label for="pagebody">Page Body</label>
+				<textarea type="text" name="editor" class="form-control" id="pagebody" placeholder="Page Body"></textarea>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="description">Meta Description</label>
+				<input type="text" class="form-control" id="description" placeholder="Add some will be Description---">
+			  </div>
+		  </div>
+		  <section>
+          <div class="modal-footer">
+			<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary">Save changes</button>
+		  </div>
+          </section>
+	  </form>
+		</div>
+      </div>
+ <script>
+        CKEDITOR.replace( 'editor' );
+</script>

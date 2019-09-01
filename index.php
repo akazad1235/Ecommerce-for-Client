@@ -1,21 +1,13 @@
-<?php
-$host="localhost";
-$user="root";
-$pass="";
-$dbname="shopping";
-$conn=mysqli_connect($host, $user, $pass, $dbname);
-if (!$conn) {
-    echo"db connect faild";
-}
-?>
+
 <?php include('inc/header.php');?>
         <!-- MAIN -->
+        <?php include("classes/products.php")?>
+<?php include("classes/category.php")?>
+<?php $pd=new Product()?>
+<?php $ct=new Category()?>
         <main class="site-main">
-
             <div class="block-slide">
-
                 <div class="container">
-
                     <div class="main-slide slide-opt-3">
 
                         <div class="owl-carousel nav-style5" data-nav="true" data-autoplay="false" data-dots="true" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
@@ -105,46 +97,25 @@ if (!$conn) {
                     <div class="title-of-section">Top Categories This Week</div>
 
                     <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="true" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"360":{"items":2},"500":{"items":3},"992":{"items":5}}'>
-
+                    
+                    <?php
+                    //top category select
+                    $getCatName=$pd->GetTopCategory();
+                    if ($getCatName) {
+                        while ($row=$getCatName->fetch_assoc()) {?>
+                            
+                     
                         <div class="block-top-categori-item">
 
-                            <a href="#"><img src="assets/images/home1/c1.jpg" alt="c1"></a>
+                            <a href="grid-product.php?catgoryId=<?php echo $row['cat_name']?>"><img style="width:150px; height:150px  " src="admin/<?php echo $row['image']?>" alt="c1"></a>  
 
-                            <div class="block-top-categori-title">Pocket Drone</div>
-
-                        </div>
-
-                        <div class="block-top-categori-item">
-
-                            <a href="#"><img src="assets/images/home1/c2.jpg" alt="c2"></a>
-
-                            <div class="block-top-categori-title">Head Phone</div>
+                            <div class="block-top-categori-title"><?php echo $row['cat_name']?></div>
 
                         </div>
-
-                        <div class="block-top-categori-item">
-
-                            <a href="#"><img src="assets/images/home1/c3.jpg" alt="c3"></a>
-
-                            <div class="block-top-categori-title">Smartwatch</div>
-
-                        </div>
-
-                        <div class="block-top-categori-item">
-
-                            <a href="#"><img src="assets/images/home1/c4.jpg" alt="c4"></a>
-
-                            <div class="block-top-categori-title">TV 4k</div>
-
-                        </div>
-
-                        <div class="block-top-categori-item">
-
-                            <a href="#"><img src="assets/images/home1/c5.jpg" alt="c5"></a>
-
-                            <div class="block-top-categori-title">Wireless Speaker</div>
-
-                        </div>
+                   <?php
+                    }
+                }
+                ?>
 
                     </div>
 
@@ -196,7 +167,7 @@ if (!$conn) {
 
                             <li class="active"><a data-animated="" data-toggle="tab" href="#tab-1">All Products </a></li>
 
-                            <li><a data-animated="fadeInLeft" data-toggle="tab" href="#tab-2">Accessories</a></li>
+                            <li><a data-animated="fadeInLeft" data-toggle="tab" href="#tab-2">Laptop</a></li>
 
                             <li><a data-animated="zoomInUp" data-toggle="tab" href="#tab-2">Top 100 Best Seller</a></li>
 
@@ -211,8 +182,12 @@ if (!$conn) {
                                 <div id="tab-1" class="tab-panel active">
 
                                     <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":5}}'>
-                                        <div class="owl-one-row">
 
+                             <?php
+                             $allPro=$pd->AllProduct();
+                             if ($allPro) {
+                                while ($row=$allPro->fetch_assoc()) {?>       
+                                        <div class="owl-one-row">  
                                             <div class="product-item style1">
 
                                                 <div class="product-inner equal-elem">
@@ -221,79 +196,19 @@ if (!$conn) {
 
                                                         <div class="thumb-inner">
 
-                                                            <a href="#"><img src="assets/images/home1/f1.jpg" alt="f1"></a>
-
-                                                        </div>
-
-                                                        <a href="#" class="quick-view">Quick View</a>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">Vegan Kitchen Essentials</a></div>
-
-                                                        <span class="price price-dark">
-
-                                                            <ins>$229.00</ins>
-
-                                                        </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                        <div class="group-btn-hover">
-
-                                                            <div class="inner">
-
-                                                                <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                <a href="#" class="add-to-cart">Add to cart</a>
-
-                                                                <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner equal-elem">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/home1/f6.jpg" alt="f6"></a>
+                                                            <a href="detail.php?proDetaildId=<?php echo $row['id']?>"><img style="height:200px"  src="admin/<?php echo $row['image']?>" alt="f6"></a>
 
                                                         </div>
 
                                                         <span class="onnew style2">New</span>
 
-                                                        <a href="#" class="quick-view">Quick View</a>
+                                                        <a href=" " data-toggle="modal" data-target="#addPage" class="quick-view">Quick View</a>
 
                                                     </div>
 
                                                     <div class="product-innfo">
 
-                                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable laptop</a></div>
+                                                        <div class="product-name"><a href="detail.php?proDetaildId=<?php echo $row['id']?>"><?php echo $row['product_name']?></a></div>
 
                                                         <span class="price price-dark">
 
@@ -337,7 +252,10 @@ if (!$conn) {
 
                                             </div>
                                         </div>
-                                        
+                                        <?php
+                                }
+                            }
+                                        ?>
                                         
 
                                     </div>
@@ -349,14 +267,10 @@ if (!$conn) {
                                     <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":4},"1200":{"items":5}}'>
 
                                 <?php
-                                $sql="SELECT * FROM tbl_product";
-                                $result=$conn->query($sql);
-                                if ($result->num_rows>0) {
-                                    while ($row=$result->fetch_assoc()) {?>
-                                     
-                                 
+                                $getPro=$pd->getProduct(); 
+                                if ($getPro) {
+                                    while ($row=$getPro->fetch_assoc()) {?> 
 
-                                                        
                                     <div class="owl-one-row">
 
 <div class="product-item style1">
@@ -367,7 +281,7 @@ if (!$conn) {
 
             <div class="thumb-inner">
 
-                <a href="#"><img src="admin/<?php echo $row['image']?>" alt="f1"></a>
+                <a href="#"  ><img style="height:200px" src="admin/<?php echo $row['image']?>" alt="f1"></a>
 
             </div>
 
@@ -1167,7 +1081,42 @@ if (!$conn) {
             </div>
 
         </main><!-- end MAIN -->
-
+        
+<!-- start modal for quick view -->
+<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	  <form>
+		<div class="modal-content">
+		  <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Product Details</h4>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			
+		  </div>
+		  <div class="modal-body">
+			 <div class="form-group">
+				<label for="pagetitle">Product Name</label>
+				<input type="text" class="form-control" id="addPage" placeholder="Page Title">
+			  </div>
+			  <div class="form-group">
+				<label for="pagebody">Page Body</label>
+				<textarea type="text" name="editor" class="form-control" id="pagebody" placeholder="Page Body"></textarea>
+			  </div>
+			  
+			  <div class="form-group">
+				<label for="description">Meta Description</label>
+				<input type="text" class="form-control" id="description" placeholder="Add some will be Description---">
+			  </div>
+		  </div>
+		  <section>
+          <div class="modal-footer">
+			<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-primary">Save changes</button>
+		  </div>
+          </section>
+	  </form>
+        </div>
+        <!-- end modal for quick view -->
+      </div>
 
 
         <!-- FOOTER -->

@@ -5,28 +5,24 @@
 <?php  //$filepath= realpath(dirname(__FILE__));?>
 <?php //include_once($filepath.'../../../lib/database.php');?>
 <?php //include_once($filepath.'../../../config/config.php');?>
-<?php
- include_once('../lib/database.php');
- include_once('../helpers/format.php');
- include_once('../config/config.php');
-?>
+<?php  $filepath=realpath(dirname(__FILE__));?>
+<?php include_once($filepath.'/../lib/database.php')?>
 
 
     <?php
     class Category{
 
         private $db;
-        private $fm;
+       
 
         public function __construct()
         {
             $this->db=new Database();
-            $this->fm=new Format();
+            
 
         }
 
         public function addCategory($name){
-            $name=$this->fm->validation($name);
             $name=mysqli_real_escape_string($this->db->link,  $name);
             if (empty($name)) {
                 $alrtMsg="<span class='alrtMsg'> Category Name Must Not be Empty<span>";
@@ -96,6 +92,7 @@
         }
 
 
+       
       
     }
     //category class end
