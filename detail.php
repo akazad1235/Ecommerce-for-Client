@@ -1,16 +1,16 @@
 <?php include('inc/header.php')?>
-<!-- end HEADER -->		
-<?php include("classes/products.php")?>
-<?php include("classes/category.php")?>
-<?php $pd=new Product()?>
-<?php $ct=new Category()?>
+<!-- end HEADER -->	
+
+		
 <?php
-if (isset($_GET['proDetaildId'])) {
-    $detailsId=$_GET['proDetaildId'];
-}
+//product details form index page
+ if (isset($_GET['proDetaildId'])) {
+   echo $id=$_GET['proDetaildId'];
+} 
 ?>
 
-		<!-- MAIN -->
+
+	<!-- MAIN -->
 		<main class="site-main">
 
             <div class="container">
@@ -24,14 +24,27 @@ if (isset($_GET['proDetaildId'])) {
                 </ol>
 
             </div>
-
+        
             <div class="container">
-
+            <?php
+                               //future try to add cart
+                            if (isset($_POST['submit'])) {
+                                $qty=$_POST['qty'];
+                                $addCart = $cart->addCart($qty, $id);
+                            } 
+                               ?> 
+            <?php
+        
+            if (isset($addCart )) {
+            echo $addCart ;
+        }
+        ?>
                 <div class="product-content-single">
-
+               
+        
                     <div class="row">
                 <?php
-                $proDetails=$pd->singleProductDetails($detailsId);
+                $proDetails=$pd->singleProductDetails($id);
                 if ($proDetails) {
                     while ($row=$proDetails->fetch_assoc()) {?>
                         
@@ -90,7 +103,7 @@ if (isset($_GET['proDetaildId'])) {
                 }
                 ?>
                      <?php
-                $proDetails=$pd->singleProductDetails($detailsId);
+                $proDetails=$pd->singleProductDetails($id);
                 if ($proDetails) {
                     while ($row=$proDetails->fetch_assoc()) {?>
 
@@ -188,14 +201,15 @@ if (isset($_GET['proDetaildId'])) {
                                     <del>$259.00</del>
 
                                 </span>
-
+                            
+                               <form action="" method="post">        
                                 <div class="quantity">
 
                                     <h6 class="quantity-title">Quantity:</h6>
 
                                     <div class="buttons-added">
 
-                                        <input type="text" value="1" title="Qty" class="input-text qty text" size="1">
+                                        <input type="text" value="1" name="qty" title="Qty" class="input-text qty text" size="1">
 
                                         <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
 
@@ -205,16 +219,18 @@ if (isset($_GET['proDetaildId'])) {
 
                                 </div>
 
+                                <form action=" " method="post">
                                 <div class="single-add-to-cart">
 
-                                    <a href="#" class="btn-add-to-cart">Add to cart</a>
+                                    <input class="btn-add-to-cart" type="submit" name="submit" value="Add to Cart"/><br>
+                                    
 
                                     <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
 
                                     <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
 
                                 </div>
-
+                                    </form>
                             </div>
 
                         </div>

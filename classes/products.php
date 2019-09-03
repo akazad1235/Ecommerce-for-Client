@@ -1,5 +1,6 @@
-<?php  $filepath=realpath(dirname(__FILE__));?>
-<?php include_once($filepath.'/../lib/database.php')?>
+<?php  $filepath= realpath(dirname(__FILE__));?>
+<?php include_once($filepath.'/../lib/database.php');?>
+<?php include_once($filepath.'/../helpers/format.php');?>
 <?php
         class Product{
             private $db;

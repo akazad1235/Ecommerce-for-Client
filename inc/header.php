@@ -1,10 +1,18 @@
+<?php include("lib/session.php");
+Session::init();
+?>
 <!DOCTYPE html>
 
 <html lang="en">
-
-
 <!-- Mirrored from ledthanhdat.vn/tyrion/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jul 2019 07:11:35 GMT -->
 <head>
+
+<?php include("classes/products.php")?>
+<?php include("classes/category.php")?>
+<?php include("classes/cart.php")?>
+<?php $pd=new Product()?>
+<?php $ct=new Category()?>
+<?php $cart=new Cart()?>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -364,9 +372,10 @@
 
                                             <div class="actions">
 
-                                                <a class="btn btn-viewcart" href="#">View cart</a>
+                                                <a class="btn btn-viewcart" href="shopping-cart.php">
+                                                    View cart</a>
 
-                                                <a class="btn btn-checkout" href="#">Checkout</a>
+                                                <a class="btn btn-checkout" href="checkout.php">Checkout</a>
 
                                             </div>
 

@@ -1,9 +1,6 @@
 <?php include('inc/header.php')?>
 <!-- end HEADER -->        
-<?php include("classes/products.php")?>
-<?php include("classes/category.php")?>
-<?php $pd=new Product()?>
-<?php $ct=new Category()?>
+
 <?php
 if (isset($_GET['catgoryId'])) {
     $catId=$_GET['catgoryId'];

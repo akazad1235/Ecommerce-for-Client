@@ -5,10 +5,9 @@
 <?php  //$filepath= realpath(dirname(__FILE__));?>
 <?php //include_once($filepath.'../../../lib/database.php');?>
 <?php //include_once($filepath.'../../../config/config.php');?>
-<?php
- include_once('../lib/database.php');
- include_once('../config/config.php');
-?>
+<?php  $filepath= realpath(dirname(__FILE__));?>
+<?php include_once($filepath.'/../lib/database.php');?>
+<?php include_once($filepath.'/../helpers/format.php');?>
 
 
     <?php

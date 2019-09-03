@@ -1,10 +1,7 @@
 
 <?php include('inc/header.php');?>
         <!-- MAIN -->
-        <?php include("classes/products.php")?>
-<?php include("classes/category.php")?>
-<?php $pd=new Product()?>
-<?php $ct=new Category()?>
+
         <main class="site-main">
             <div class="block-slide">
                 <div class="container">
@@ -231,21 +228,26 @@
                                                             <span class="review">5 Review(s)</span>
 
                                                         </span>
-
+                                                    <?php
+                                                    //future try to add cart
+                                                    /* if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submit'])) {
+                                                    $addCart = $cart->addCart();
+                                                    } */
+                                                    ?>    
+                                                    
                                                         <div class="group-btn-hover">
 
                                                             <div class="inner">
 
                                                                 <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                <a href="#" class="add-to-cart">Add to cart</a>
-
-                                                                <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                                                <a href="detail.php?proDetaildId=<?php echo $row['id']?>" type="submit" name="addCart" class="add-to-cart">Buy Now</a>
+                                                            
+                                                                <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 
                                                             </div>
 
                                                         </div>
-
+                                                    
                                                     </div>
 
                                                 </div>
