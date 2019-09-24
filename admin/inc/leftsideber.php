@@ -111,6 +111,9 @@
                                     <li>
                                         <a href="ecommerce-sellers.php">Sellers</a>
                                     </li>
+                                    <li>
+                                        <a href="adduser.php">Add User</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>

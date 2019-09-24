@@ -92,9 +92,31 @@
             return $result;
         }
 
+        //all catetgory list for user site
+        public function allCatList($id){
+            $query="SELECT tbl_brand.brand_name,tbl_product.brandId, count(tbl_product.brandId) as total from tbl_brand 
+                INNER JOIN tbl_product 
+                on tbl_brand.id=tbl_product.brandId
+                INNER JOIN tbl_category
+                on tbl_category.catId=tbl_product.cat
+                where tbl_category.cat_name='$id'
+                group by tbl_product.brandId
+                order by tbl_product.id desc"; 
+                
+                $result=$this->db->select($query);
+               return $result;
+        }
+
+        public function cat(){
+
+            $query="SELECT * FROM tbl_category";
+            $result=$this->db->select($query);
+            return $result;
+        }
 
        
       
     }
+
     //category class end
     ?>

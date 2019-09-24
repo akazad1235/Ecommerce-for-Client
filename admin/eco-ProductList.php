@@ -10,22 +10,26 @@
 
 ?>
 <?php include('../classes/products.php')?>
-<?php include('../helpers/format.php')?>
 <?php
 //create object from product classes
-$productList = new Product();
+$pd = new Product();
 $fm = new Format();
 
 ?>
+
+ 
+
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
           
             <div class="content-page">
                 <div class="content">
+ 
 
                     <!-- Start Content-->
                     <div class="container-fluid">
+     
                         
                         <!-- start page title -->
                         <div class="row">
@@ -52,7 +56,7 @@ $fm = new Format();
                         <tbody>
                          
                            <?php
-                           $getAllProduct=$productList->getAllProduct();
+                            $getAllProduct=$pd->getAllProduct();
                            //echo $getAllProduct;
                            if ($getAllProduct) {
                                 $i=1;
@@ -68,7 +72,7 @@ $fm = new Format();
                                 <td><?php echo $fm->sortText($row['description'],20)?></td>
                                 <td>$<?php echo $row['price']?></td>
                                 <td><img width='60px' height='60px' src="<?php echo $row['image']?>" /></td>
-                                <td > <a href="" data-toggle="modal" data-target="#addPage">info</a></td>
+                                <td > <button name="view" id="<?php echo $row['id']?>" class="view_data" data-toggle="modal">info</button></td>
                                 <td>azad</td> 
                                 <td>
                                 <?php
@@ -84,13 +88,13 @@ $fm = new Format();
                                 <?php 
                                 if(isset($_GET['proDltId'])){
                                     $delId=$_GET['proDltId'];
-                                    $delProduct=$productList->deleteProduct($delId);
+                                    $delProduct=$pd->AlldeleteProduct($delId);
                                 }
                                 ?>
                                 <a href="eco-productEdit.php?editProId=<?php echo $row['id']?>" class="btn btn-info" >Eidt</a> <a href="?proDltId=<?php echo $row['id']?>" onclick="return confirm('Are You Sure To Delete')" class="btn btn-danger">Delete</a></td>
                             </tr>
                             <?php }
-                           }
+                          }
                            ?>    
 
                         </tbody>
@@ -114,29 +118,19 @@ $(document).ready( function () {
 });
 </script>
      <!-- start modal -->
-     <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-xl" role="document">
-	  <form>
+ 
+    
+	 
 		<div class="modal-content">
 		  <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">Product Details</h4>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			
 		  </div>
-		  <div class="modal-body">
-			 <div class="form-group">
-				<label for="pagetitle">Product Name</label>
-				<input type="text" class="form-control" id="addPage" placeholder="Page Title">
-			  </div>
-			  <div class="form-group">
-				<label for="pagebody">Page Body</label>
-				<textarea type="text" name="editor" class="form-control" id="pagebody" placeholder="Page Body"></textarea>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="description">Meta Description</label>
-				<input type="text" class="form-control" id="description" placeholder="Add some will be Description---">
-			  </div>
+		  <div class="modal-body" id="employee_detail">
+			 
 		  </div>
 		  <section>
           <div class="modal-footer">
@@ -144,9 +138,32 @@ $(document).ready( function () {
 			<button type="submit" class="btn btn-primary">Save changes</button>
 		  </div>
           </section>
-	  </form>
+	  
 		</div>
       </div>
+     </div>
  <script>
         CKEDITOR.replace( 'editor' );
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('body').on('click','.view_data', function(){
+      var employee_id=$(this).attr("id");
+      $.ajax({
+        url: "select.php",
+        post:"POST",
+        data: {employee_id:employee_id},
+        success:function(data){
+          $('#employee_detail').html(data);
+          $('#dataModal').modal("show");
+
+        }
+
+      })
+
+    })
+
+
+
+  })
 </script>

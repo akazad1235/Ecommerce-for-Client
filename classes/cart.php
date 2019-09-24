@@ -35,9 +35,21 @@
             $successMsg="Product Added Success";
             return $successMsg;
         }
-
-
-
-
     }
+
+    public function getAllCart(){
+        $sId=session_id();
+        $query="SELECT * FROM tbl_cart where sessionId='$sId'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
+    public function getCartList(){
+        $sId=session_id();
+        $query="SELECT * from tbl_cart where sessionId='$sId'";
+        $result=$this->db->select($query);
+        return $result;
+    }
+
+
 }

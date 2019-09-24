@@ -27,19 +27,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                <?php
+                //get all cart product by session wize id
+                $getCart=$cart->getAllCart();
+                if ($getCart) {
+                    while ($row=$getCart->fetch_assoc()) {?>
+                        
+                 
                                 <tr>
                                     <td class="tb-image"><a href="#" class="item-photo"><img src="assets/images/cart1.jpg"
                                                                                             alt="cart"></a></td>
                                     <td class="tb-product">
-                                        <div class="product-name"><a href="#">Smartphone MTK6737 Quad Core.</a></div>
+                                        <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
                                     </td>
                                     <td class="tb-price">
-                                        <span class="price">$229.00</span>
+                                        <span class="price">$<?php echo $row['price']?></span>
                                     </td>
                                     <td class="tb-qty">
                                         <div class="quantity">
                                             <div class="buttons-added">
-                                                <input type="text" value="1" title="Qty" class="input-text qty text"
+                                                <input type="text" value="<?php echo $row['qty']?>" title="Qty" class="input-text qty text"
                                                        size="1">
                                                 <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
                                                 <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
@@ -54,34 +61,10 @@
                                                                                   aria-hidden="true"></i></span></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="tb-image"><a href="#" class="item-photo"><img src="assets/images/cart2.jpg"
-                                                                                            alt="cart"></a>
-                                    <td class="tb-product">
-                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable
-                                            laptop</a></div>
-                                    </td>
-                                    <td class="tb-price">
-                                        <span class="price">$229.00</span>
-                                    </td>
-                                    <td class="tb-qty">
-                                        <div class="quantity">
-                                            <div class="buttons-added">
-                                                <input type="text" value="1" title="Qty" class="input-text qty text"
-                                                       size="1">
-                                                <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
-                                                <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="tb-total">
-                                        <span class="price">$229.00</span>
-                                    </td>
-                                    <td class="tb-remove">
-                                        <a href="#" class="action-remove"><span><i class="fa fa-times"
-                                                                                  aria-hidden="true"></i></span></a>
-                                    </td>
-                                </tr>
+                                <?php }
+                                 }
+                
+                ?>
                                 </tbody>
                             </table>
                         </div>

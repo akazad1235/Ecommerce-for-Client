@@ -1,4 +1,5 @@
 <?php include('../classes/adminlogin.php')?>
+M<?php Session::checkLogin();?>
 <?php 
     $adminlog = new Admin();
 ?>
@@ -28,12 +29,12 @@
 
     <body>
     <?php
-    if ($_SERVER['REQUEST_METHOD']=='POST') {
+     if ($_SERVER['REQUEST_METHOD']=='POST') {
         $adminUser=$_POST['username'];
         $adminPass=md5($_POST['password']);
         $loginChk=$adminlog->adminLogin( $adminUser, $adminPass);
         
-    }
+    } 
     ?>
         <div class="container">
             <div class="row">
@@ -43,9 +44,9 @@
                 <h2>Admin Login</h2>
            <span style="color: red; font-size:20px">
            <?php
-            if(isset($loginChk)) {
+             if(isset($loginChk)) {
                 echo $loginChk;
-            }
+            } 
             ?>
         </span>
             <div class="form-group">

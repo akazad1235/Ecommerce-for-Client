@@ -118,11 +118,24 @@
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                                    <label style="color:black">Tages:</label>
-                                    <input type="text" class="form-control" name="tages" >
+                                    <label style="color:black">Main Product Image:</label>
+                                    <input type="file" name="image1"  class="form-control">
                             </div> <!-- end col -->
                         </div>
-                       
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                    <label style="color:black">Main Product Image:</label>
+                                    <input type="file" name="image2"  class="form-control">
+                            </div> <!-- end col -->
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                    <label style="color:black">Main Product Image:</label>
+                                    <input type="file" name="image3"  class="form-control">
+                            </div> <!-- end col -->
+                        </div>
+                        
+                        
 
                         <div class="col-md-6">
                         <label style="color:black" for="sel1">Specification</label>
@@ -131,6 +144,13 @@
                         <div class="col-md-6">
                         <label style="color:black" for="sel1">Product Sort Description</label>
                         <textarea  id="editor2" name="sortDescription"></textarea>
+                        </div>
+                       
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                    <label style="color:black">Tages:</label>
+                                    <input type="text" class="form-control" name="tages" >
+                            </div> <!-- end col -->
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
@@ -144,10 +164,11 @@
                                 </select>
                         </div>
                         </div>
-                        <div class="col-md-6"></div>
-                        <div class="col-md-2">
+                        
+                        <div class="col-md-2" style="float:left">
                         <button type="submit" class="btn btn-info" name="submit">Submit</button>
                         </div>
+                        <div class="col-md-6"></div>
                         <form>
                         <!-- end row -->
                        

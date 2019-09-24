@@ -1,11 +1,9 @@
 <?php include('inc/header.php')?>
-<!-- end HEADER -->	
-
-		
+<!-- end HEADER -->			
 <?php
-//product details form index page
+//product details id or cart id  from index page
  if (isset($_GET['proDetaildId'])) {
-   echo $id=$_GET['proDetaildId'];
+     $id=$_GET['proDetaildId'];
 } 
 ?>
 
@@ -27,17 +25,17 @@
         
             <div class="container">
             <?php
-                               //future try to add cart
-                            if (isset($_POST['submit'])) {
-                                $qty=$_POST['qty'];
-                                $addCart = $cart->addCart($qty, $id);
-                            } 
-                               ?> 
+            //set add to cart option
+             if (isset($_POST['submit'])){
+            $qty=$_POST['qty'];
+            $addCart = $cart->addCart($qty, $id);
+        } 
+            ?> 
             <?php
-        
-            if (isset($addCart )) {
-            echo $addCart ;
-        }
+        //Add to card success massage
+            if (isset($addCart )){
+                echo $addCart;
+             }
         ?>
                 <div class="product-content-single">
                
@@ -55,7 +53,7 @@
 
                                 <div class="image-preview-container image-thick-box image_preview_container">
 
-                                    <img id="img_zoom" data-zoom-image="admin/<?php echo $row['image']?>" src="admin/<?php  echo $row['image']?>" alt="">
+                                    <img id="img_zoom" style='width:250px; height:250px' data-zoom-image="admin/<?php echo $row['image']?>" src="admin/<?php  echo $row['image']?>" alt="">
 
                                     <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
 
@@ -63,33 +61,29 @@
 
                                 <div class="product-preview image-small product_preview">
 
-                                    <div id="thumbnails" class="thumbnails_carousel owl-carousel nav-style4" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":5},"600":{"items":5},"1000":{"items":5}}'>
+                                    <div  id="thumbnails" class="thumbnails_carousel owl-carousel nav-style4" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":5},"600":{"items":5},"1000":{"items":5}}'>
 
-                                        <a href="#" data-image="admin/<?php echo $row['image']?>" data-zoom-image="admin/<?php echo $row['image']?>">
+                                        <a href="#" data-image="admin/<?php echo $row['image']?>" data-zoom-image="admin/<?php echo $row['image']?>" >
 
-                                            <img src="admin/<?php echo $row['image']?>" data-large-image="admin/<?php echo $row['image']?>" alt="i1">
-
-                                        </a>
-                                        <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
-
-                                            <img src="assets/images/detail/i2.jpg" data-large-image="assets/images/detail/thick-box-1.jpg" alt="i1">
+                                            <img style='width:100px; height:65px' src="admin/<?php echo $row['image']?>" data-large-image="admin/<?php echo $row['image']?>" alt="i1">
 
                                         </a>
-                                        <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
+                                        <a href="#" data-image="admin/<?php echo $row['image1']?>" data-zoom-image="admin/<?php echo $row['image1']?>">
 
-                                            <img src="assets/images/detail/i2.jpg" data-large-image="assets/images/detail/thick-box-1.jpg" alt="i1">
-
-                                        </a>
-                                        <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
-
-                                            <img src="assets/images/detail/i2.jpg" data-large-image="assets/images/detail/thick-box-1.jpg" alt="i1">
+                                            <img style='width:100px; height:65px' src="admin/<?php echo $row['image1']?>" data-large-image="admin/<?php echo $row['image1']?>" alt="i1">
 
                                         </a>
-                                        <a href="#" data-image="assets/images/detail/thick-box-1.jpg" data-zoom-image="assets/images/detail/thick-box-1.jpg">
+                                        <a href="#" data-image="admin/<?php echo $row['image2']?>" data-zoom-image="admin/<?php echo $row['image2']?>">
 
-                                            <img src="assets/images/detail/i2.jpg" data-large-image="assets/images/detail/thick-box-1.jpg" alt="i1">
+                                        <img style='width:100px; height:65px' src="admin/<?php echo $row['image2']?>" data-large-image="admin/<?php echo $row['image2']?>" alt="i1">
 
                                         </a>
+                                        <a href="#" data-image="admin/<?php echo $row['image3']?>" data-zoom-image="admin/<?php echo $row['image3']?>">
+
+                                        <img style='width:100px; height:65px' src="admin/<?php echo $row['image3']?>" data-large-image="admin/<?php echo $row['image3']?>" alt="i1">
+
+                                        </a>
+                                       
 
                                     </div>
 
@@ -100,6 +94,8 @@
                         </div>
                         <?php
                     }
+                }else{
+                    echo "Prodcut select not available";
                 }
                 ?>
                      <?php

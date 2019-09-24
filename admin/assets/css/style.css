@@ -33,3 +33,7 @@ a:not([href]):not([tabindex]) {
 .btn{
         cursor: pointer
 }
+.image{
+    width: 100px;
+    height: 100px;
+}

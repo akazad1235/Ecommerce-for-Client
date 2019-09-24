@@ -1,4 +1,11 @@
-              
+
+<?php // $ct = new Category()?>
+<?php
+  if (isset($_GET['catgoryId'])) {
+      $id=$_GET['catgoryId'];
+ } 
+?>
+           
                    <div class="col-md-3 col-sm-4">
 
                         <div class="col-sidebar">
@@ -12,20 +19,35 @@
                                     <div class="filter-options-item filter-categori">
 
                                         <div class="filter-options-title">Categories</div>
- 
-                                        <div class="filter-options-content">
-
-                                            <ul>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Laptop</label></li>
-
-                                               
-
-                                            </ul>
-
-                                        </div>
+                                        
+                                       
+                        
+                   
+                    <div class="filter-options-content" >
+                    <?php
+                       
+                                
+                    $catList=$ct->allCatList($id);
+                    if (!$catList) {
+                        echo "Category Select Faild";
+                    }else{
+                        while($row=$catList->fetch_assoc()){?>   
+                        <li>
+                       <label class="inline" ><a href="#" cId="<?php echo $row['brandId']?>"><?php echo $row['brand_name']?></a><span >(<?php echo $row['total']?>)</span></label>
+                       </li>
+                       <?php 
+                        }
+                    }
+                    
+                    ?>
+                   </ul>
+                              
+                            </div>
                                       
-                                    </div>
+                                    
+                     
+                      </div>                 
+                       
 
                                     <div class="filter-options-item filter-brand">
 

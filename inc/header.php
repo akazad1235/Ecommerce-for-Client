@@ -2,7 +2,6 @@
 Session::init();
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <!-- Mirrored from ledthanhdat.vn/tyrion/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jul 2019 07:11:35 GMT -->
 <head>
@@ -35,12 +34,14 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="assets/css/chosen.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.bxslider.css">
-
+    <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700,700i" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700" rel="stylesheet">
+    
 
 </head>
 
@@ -270,8 +271,8 @@ Session::init();
                                     <span class="counter qty">
 
                                         <span class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
-
-                                        <span class="counter-number">2</span>
+                                        
+                                        <span class="counter-number" id="cart-count"></span>
 
                                     </span>
 
@@ -293,70 +294,17 @@ Session::init();
 
                                             <div class="subtitle">
 
-                                                You have <span>2</span> item(s) in your cart
+                                                You have <span id="cart-count"></span> item(s) in your cart
 
                                             </div>
 
                                             <div class="minicart-items-wrapper">
+                                            
 
-                                                <ol class="minicart-items">
-
-                                                    <li class="product-inner">
-
-                                                        <div class="product-thumb style1">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href="#"><img src="assets/images/home1/c1.jpg" alt="c1"></a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="#">Xbox One S Halo Collection Bund</a></div>
-
-                                                            <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
-
-                                                            <span class="price price-dark">
-
-                                                                <ins>$229.00</ins>
-
-                                                            </span>
-
-                                                        </div>
-
-                                                    </li>
-
-                                                    <li class="product-inner">
-
-                                                        <div class="product-thumb style1">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href="#"><img src="assets/images/home1/c2.jpg" alt="c2"></a>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable...</a></div>
-                                                            <a href="#" class="remove"><i class="fa fa-times" aria-hidden="true"></i></a>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                        </div>
-
-                                                    </li>
+                                               
+                                                <ol class="minicart-items" id="cart_menu">
+                                                
+                                                    
 
                                                 </ol>
 

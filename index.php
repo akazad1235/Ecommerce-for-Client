@@ -104,7 +104,7 @@
                      
                         <div class="block-top-categori-item">
 
-                            <a href="grid-product.php?catgoryId=<?php echo $row['cat_name']?>"><img style="width:150px; height:150px  " src="admin/<?php echo $row['image']?>" alt="c1"></a>  
+                            <a pid="<?php echo $row['catId']?>" href="grid-product.php?catgoryId=<?php echo $row['cat_name']?>" ><img style="width:150px; height:150px  "  src="admin/<?php echo $row['image']?>" alt="c1"></a>  
 
                             <div class="block-top-categori-title"><?php echo $row['cat_name']?></div>
 
@@ -198,8 +198,8 @@
                                                         </div>
 
                                                         <span class="onnew style2">New</span>
-
-                                                        <a href=" " data-toggle="modal" data-target="#addPage" class="quick-view">Quick View</a>
+                                
+                                                        <a href="#" class="wishlist">Quick View</a>   
 
                                                     </div>
 
@@ -1083,43 +1083,6 @@
             </div>
 
         </main><!-- end MAIN -->
-        
-<!-- start modal for quick view -->
-<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	  <form>
-		<div class="modal-content">
-		  <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Product Details</h4>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			
-		  </div>
-		  <div class="modal-body">
-			 <div class="form-group">
-				<label for="pagetitle">Product Name</label>
-				<input type="text" class="form-control" id="addPage" placeholder="Page Title">
-			  </div>
-			  <div class="form-group">
-				<label for="pagebody">Page Body</label>
-				<textarea type="text" name="editor" class="form-control" id="pagebody" placeholder="Page Body"></textarea>
-			  </div>
-			  
-			  <div class="form-group">
-				<label for="description">Meta Description</label>
-				<input type="text" class="form-control" id="description" placeholder="Add some will be Description---">
-			  </div>
-		  </div>
-		  <section>
-          <div class="modal-footer">
-			<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-			<button type="submit" class="btn btn-primary">Save changes</button>
-		  </div>
-          </section>
-	  </form>
-        </div>
-        <!-- end modal for quick view -->
-      </div>
-
-
-        <!-- FOOTER -->
-<?php include('inc/footer.php')?>
+ 
+    <!-- FOOTER -->
+    <?php include('inc/footer.php')?>
