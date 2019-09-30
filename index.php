@@ -104,7 +104,7 @@
                      
                         <div class="block-top-categori-item">
 
-                            <a pid="<?php echo $row['catId']?>" href="grid-product.php?catgoryId=<?php echo $row['cat_name']?>" ><img style="width:150px; height:150px  "  src="admin/<?php echo $row['image']?>" alt="c1"></a>  
+                            <a href="grid-product.php?catgoryId=<?php echo $row['cat_name']?>" ><img style="width:150px; height:150px  "  src="admin/<?php echo $row['image']?>" alt="c1"></a>  
 
                             <div class="block-top-categori-title"><?php echo $row['cat_name']?></div>
 

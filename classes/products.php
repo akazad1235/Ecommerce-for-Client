@@ -245,19 +245,21 @@
                $result=$this->db->select($query);
                return $result;
              }
-             public function getCategoryWisePds(){
-                $query="select * from tbl_product";
+             public function getCategoryWisePd2($catId2){
+                $query="SELECT * FROM tbl_product, tbl_brand 
+                where tbl_product.brandId=tbl_brand.id and tbl_product.brandId='$catId2'";
                $result=$this->db->select($query);
                return $result;
              }
+             
+             
 
 
              //single product Details
              public function singleProductDetails($detailsId){
                 $query="SELECT tbl_product.*, tbl_product2.image1,tbl_product2.image2, tbl_product2.image3, tbl_product2.sort_description, tbl_product2.specifications from tbl_product 
                 INNER JOIN tbl_product2 
-                on tbl_product.product_id=tbl_product2.product_id where tbl_product.id='$detailsId'
-                order by tbl_product.id desc"; 
+                on tbl_product.product_id=tbl_product2.product_id where tbl_product.id='$detailsId'"; 
                 $result=$this->db->select($query);
                return $result;
              }

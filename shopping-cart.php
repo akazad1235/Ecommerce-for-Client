@@ -1,3 +1,4 @@
+
 <?php include('inc/header.php')?>
 <!-- end HEADER -->
 
@@ -10,10 +11,30 @@
                 <li class="active"><a href="#">Shopping Cart</a></li>
             </ol>
         </div>
+        <?php
+        if (isset($_POST['submit'])) {
+            $qty=$_POST['quantity'];
+            $cartId=$_POST['cartId'];    
+            $updateQty=$cart->updateQty($qty,$cartId );
+            echo $updateQty;
+        
+    }
+        ?>
+    <?php 
+    if (isset($_GET['catDltId'])) {
+        $id=$_GET['catDltId'];
+        $delCart=$cart->cartDelete($id);
+        echo $delCart;
+    }
+    ?>
+   
+                
+                
+                
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <form class="form-cart">
                         <div class="table-cart">
                             <table class="table">
                                 <thead>
@@ -22,20 +43,22 @@
                                     <th class="tb-product">Product Name</th>
                                     <th class="tb-price">Unit Price</th>
                                     <th class="tb-qty">Qty</th>
+                                    <th class="tb-qty"></th>
                                     <th class="tb-total">SubTotal</th>
-                                    <th class="tb-remove"></th>
+                                    <th class="tb-remove">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                 <?php
-                //get all cart product by session wize id
-                $getCart=$cart->getAllCart();
-                if ($getCart) {
-                    while ($row=$getCart->fetch_assoc()) {?>
+                   //get all cart product by session wize id
+                   $getCart=$cart->getAllCart();
+                   if ($getCart) {
+                    $sum=0;
+                   while ($row=$getCart->fetch_assoc()) {?>
                         
                  
                                 <tr>
-                                    <td class="tb-image"><a href="#" class="item-photo"><img src="assets/images/cart1.jpg"
+                                    <td class="tb-image"><a href="#" class="item-photo"><img width='50' src="admin/<?php echo $row['image']?>"
                                                                                             alt="cart"></a></td>
                                     <td class="tb-product">
                                         <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
@@ -43,51 +66,77 @@
                                     <td class="tb-price">
                                         <span class="price">$<?php echo $row['price']?></span>
                                     </td>
+
+                                    <form action=""  method="post">
                                     <td class="tb-qty">
                                         <div class="quantity">
+                                        
                                             <div class="buttons-added">
-                                                <input type="text" value="<?php echo $row['qty']?>" title="Qty" class="input-text qty text"
+                                             
+                                            <input type="text" name="quantity" value="<?php echo $row['qty']?>" title="Qty" class="input-text qty text"
                                                        size="1">
+                                            <input type="hidden" name="cartId"  value="<?php echo $row['cartId']?>"/> 
                                                 <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
                                                 <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
                                             </div>
+                                            
                                         </div>
                                     </td>
+                                    <td class="tb-remove">
+                                        <button  type="submit" name="submit" class="action-remove" title="Update your Cart"><span><i class="fa fa-edit" aria-hidden="true"></i></span></button>
+                                    </td>
+                                  </form>
                                     <td class="tb-total">
-                                        <span class="price">$229.00</span>
+                                        <span class="price">
+                                        <?php
+                                             $total=$row['price'] * $row['qty'];
+                                            echo "$".$total;
+                                            ?>
+                                        </span>
                                     </td>
                                     <td class="tb-remove">
-                                        <a href="#" class="action-remove"><span><i class="fa fa-times"
-                                                                                  aria-hidden="true"></i></span></a>
+                                        <a  href="?catDltId=<?php echo $row['cartId']?>" class="action-remove" title="Update your Cart"><button><span><i class="fa fa-times" aria-hidden="true"></i></span></button></a>
                                     </td>
+
+                                    
+                                    
                                 </tr>
-                                <?php }
-                                 }
-                
-                ?>
+                            <?php
+                            $sum=$sum+$total;
+                            //cpy
+
+                   }?>
+              
+                           
                                 </tbody>
                             </table>
                         </div>
                         <div class="cart-actions">
-                            <button type="submit" class="btn-continue">
+                            <a href="index.php"><button type="" class="btn-continue">
                                 <span>Continue Shopping</span>
-                            </button>
-                            <button type="submit" class="btn-clean">
+                            </button></a>
+                           <!-- <button type="submit" name="submit" class="btn-clean">
                                 <span>Update Shopping Cart</span>
                             </button>
                             <button type="submit" class="btn-update">
                                 <span>Clear Shopping Cart</span>
-                            </button>
+                            </button>-->
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="col-md-3">
                     <div class="order-summary">
                         <h4 class="title-shopping-cart">Order Summary</h4>
                         <div class="checkout-element-content">
-                            <span class="order-left">Subtotal:<span>$458.00</span></span>
-                            <span class="order-left">Shipping:<span>Free Shipping</span></span>
-                            <span class="order-left">Total:<span>$458.00</span></span>
+                            <span class="order-left">Subtotal:<span>৳<?php echo $sum?></span></span>
+                            <span class="order-left">Vat:<span>10%</span></span>
+                            <span class="order-left">Total:<span>
+                                <?php
+                                 $vat=$sum * 0.1;
+                                 $total=$sum+$vat;
+                                 echo "৳".$total;
+                                 ?>
+                            </span></span>
                             <ul>
                                 <li><label class="inline"><input type="checkbox"><span class="input"></span>I have promo
                                     code</label></li>
@@ -98,8 +147,31 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
+        <?php   
+                             //End of if condition
+                                 }else{?>
+                                     <div class="alert alert-danger alert-dismissible fade in">
+                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                 <strong><?php echo "You have NO items in your shopping cart. !!"; ?></strong>
+                                 
+                                 </div>
+                                     
+                                     <div class="container">
+                                      <div class="cart-actions">
+                           <a href="index.php"> <button class="btn-continue">
+                                <span>Continue Shopping</span>
+                            </button></a>
+                          
+                        </div>
+                    </div>
+                            <?php
+                       
+                                 }
+                 
+                ?>
         <div class="block-recent-view">
             <div class="container">
                 <div class="title-of-section">You may be also interested</div>

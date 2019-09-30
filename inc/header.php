@@ -19,7 +19,7 @@ Session::init();
 
     <title>BdShop</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="admin/image/favicon.jpg"/>
 
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 
@@ -81,7 +81,7 @@ Session::init();
 
                     <ul class="nav-top-left" >
 
-                        <li><a href="#">Welcome to Tyrion - Always free delivery</a></li>
+                        <li><a href="#">Welcome to Braket Id - Always free delivery</a></li>
 
                     </ul><!-- hotline -->
 
@@ -192,7 +192,7 @@ Session::init();
 
                             <strong class="logo">
 
-                                <a href="index.php"><img src="assets/images/logo.jpg" alt="logo"></a>
+                                <a href="index.php"><img src="admin/image/logo.jpg" alt="logo"></a>
 
                             </strong><!-- logo -->
 
@@ -266,13 +266,13 @@ Session::init();
 
                                 
 
-                                <a class="minicart" href="#">
+                                <a class="minicart" id="cart" href="#">
 
                                     <span class="counter qty">
 
                                         <span class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
                                         
-                                        <span class="counter-number" id="cart-count"></span>
+                                        <span class="counter-number" id="cart-count">1</span>
 
                                     </span>
 

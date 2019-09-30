@@ -204,7 +204,7 @@ button, .button, input[type="submit"] {
 	
 	position: relative;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	font-size: 13px;
 	
@@ -1313,7 +1313,7 @@ input[type=password] {
 	border-radius: 30px;
 	height: 43px;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	color: #fff;
 	
@@ -2136,7 +2136,7 @@ input[type=password] {
 	
 	text-transform: uppercase;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	padding: 16px 20px 16px 23px;
 	
@@ -7964,7 +7964,7 @@ label.inline {
 	
 	padding: 6px 71px;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 }
 .shopping-cart .checkout-element-content .btn-checkout:hover {

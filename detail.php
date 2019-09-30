@@ -1,14 +1,11 @@
-<?php include('inc/header.php')?>
-<!-- end HEADER -->			
+<?php include('inc/header.php');?>
+<!-- MAIN -->
 <?php
 //product details id or cart id  from index page
  if (isset($_GET['proDetaildId'])) {
      $id=$_GET['proDetaildId'];
 } 
 ?>
-
-
-	<!-- MAIN -->
 		<main class="site-main">
 
             <div class="container">
@@ -22,86 +19,75 @@
                 </ol>
 
             </div>
-        
-            <div class="container">
-            <?php
+   <?php
             //set add to cart option
              if (isset($_POST['submit'])){
             $qty=$_POST['qty'];
             $addCart = $cart->addCart($qty, $id);
         } 
             ?> 
+         
+       
+
+  <?php
+                $proDetails=$pd->singleProductDetails($id);
+                if ($proDetails) {
+                    while ($row=$proDetails->fetch_assoc()) {?>
+ 
+            <div class="container">
             <?php
         //Add to card success massage
             if (isset($addCart )){
-                echo $addCart;
-             }
-        ?>
+                 echo $addCart;
+            }
+        ?> 
                 <div class="product-content-single">
-               
-        
                     <div class="row">
-                <?php
-                $proDetails=$pd->singleProductDetails($id);
-                if ($proDetails) {
-                    while ($row=$proDetails->fetch_assoc()) {?>
-                        
-                  
-                        <div class="col-md-4 col-sm-12 padding-right">
+                    <div class="col-md-4 col-sm-12 padding-right">
 
-                            <div class="product-media">
+<div class="product-media">
 
-                                <div class="image-preview-container image-thick-box image_preview_container">
+    <div class="image-preview-container image-thick-box image_preview_container">
 
-                                    <img id="img_zoom" style='width:250px; height:250px' data-zoom-image="admin/<?php echo $row['image']?>" src="admin/<?php  echo $row['image']?>" alt="">
+        <img id="img_zoom" style='width:250px; height:250px' data-zoom-image="admin/<?php echo $row['image']?>" src="admin/<?php  echo $row['image']?>" alt="">
 
-                                    <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
+        <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
 
-                                </div>
+    </div>
 
-                                <div class="product-preview image-small product_preview">
+    <div class="product-preview image-small product_preview">
 
-                                    <div  id="thumbnails" class="thumbnails_carousel owl-carousel nav-style4" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":5},"600":{"items":5},"1000":{"items":5}}'>
+        <div  id="thumbnails" class="thumbnails_carousel owl-carousel nav-style4" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":5},"600":{"items":5},"1000":{"items":5}}'>
 
-                                        <a href="#" data-image="admin/<?php echo $row['image']?>" data-zoom-image="admin/<?php echo $row['image']?>" >
+            <a href="#" data-image="admin/<?php echo $row['image']?>" data-zoom-image="admin/<?php echo $row['image']?>" >
 
-                                            <img style='width:100px; height:65px' src="admin/<?php echo $row['image']?>" data-large-image="admin/<?php echo $row['image']?>" alt="i1">
+                <img style='width:100px; height:65px' src="admin/<?php echo $row['image']?>" data-large-image="admin/<?php echo $row['image']?>" alt="i1">
 
-                                        </a>
-                                        <a href="#" data-image="admin/<?php echo $row['image1']?>" data-zoom-image="admin/<?php echo $row['image1']?>">
+            </a>
+            <a href="#" data-image="admin/<?php echo $row['image1']?>" data-zoom-image="admin/<?php echo $row['image1']?>">
 
-                                            <img style='width:100px; height:65px' src="admin/<?php echo $row['image1']?>" data-large-image="admin/<?php echo $row['image1']?>" alt="i1">
+                <img style='width:100px; height:65px' src="admin/<?php echo $row['image1']?>" data-large-image="admin/<?php echo $row['image1']?>" alt="i1">
 
-                                        </a>
-                                        <a href="#" data-image="admin/<?php echo $row['image2']?>" data-zoom-image="admin/<?php echo $row['image2']?>">
+            </a>
+            <a href="#" data-image="admin/<?php echo $row['image2']?>" data-zoom-image="admin/<?php echo $row['image2']?>">
 
-                                        <img style='width:100px; height:65px' src="admin/<?php echo $row['image2']?>" data-large-image="admin/<?php echo $row['image2']?>" alt="i1">
+            <img style='width:100px; height:65px' src="admin/<?php echo $row['image2']?>" data-large-image="admin/<?php echo $row['image2']?>" alt="i1">
 
-                                        </a>
-                                        <a href="#" data-image="admin/<?php echo $row['image3']?>" data-zoom-image="admin/<?php echo $row['image3']?>">
+            </a>
+            <a href="#" data-image="admin/<?php echo $row['image3']?>" data-zoom-image="admin/<?php echo $row['image3']?>">
 
-                                        <img style='width:100px; height:65px' src="admin/<?php echo $row['image3']?>" data-large-image="admin/<?php echo $row['image3']?>" alt="i1">
+            <img style='width:100px; height:65px' src="admin/<?php echo $row['image3']?>" data-large-image="admin/<?php echo $row['image3']?>" alt="i1">
 
-                                        </a>
-                                       
+            </a>
+           
 
-                                    </div>
+        </div>
 
-                                </div>
+    </div>
 
-                            </div>
+</div>
 
-                        </div>
-                        <?php
-                    }
-                }else{
-                    echo "Prodcut select not available";
-                }
-                ?>
-                     <?php
-                $proDetails=$pd->singleProductDetails($id);
-                if ($proDetails) {
-                    while ($row=$proDetails->fetch_assoc()) {?>
+</div>
 
                         <div class="col-md-5 col-sm-6">
 
@@ -124,17 +110,16 @@
                                     <span class="review">5 Review(s)</span>
 
                                 </span>
-
                                 <div class="product-infomation">
 
-                                    <?php echo $row['sort_description']?>
-
+                                    <?php echo $row['description']?>
                                 </div>
                                 <div class="product-id" style="margin-bottom:20px">
                                     <p style="font-size:20px">Prodcut Id: <span style="color:red"><?php echo $row['product_id']?><span></p>
                             </p>
                                 </div>
-                                
+                               
+
                                 <div class="group-btn-share">
 
                                     <a href="#"><img src="assets/images/detail/btn1.png" alt="btn1"></a>
@@ -146,7 +131,7 @@
 
                                 <div class="product-description">
 
-                                <?php
+                                     <?php
                                         echo $row['tages'];
                                         ?>
 
@@ -155,7 +140,7 @@
                             </div>
 
                         </div>
-                     
+
                         <div class="col-md-3 col-sm-6">
 
                             <div class="product-info-price">
@@ -183,29 +168,23 @@
                                     <span>item with Free Delivery</span>
 
                                 </div>
-                                <div class="transportation">
-
-                                    <span>Cash of Delivery</span>
-
-                                </div>
-                                
 
                                 <span class="price">
 
-                                    <ins>$<?php echo $row['price']?></ins>
+                                <ins>৳<?php echo $row['price']?></ins>
 
-                                    <del>$259.00</del>
+                                <del>৳259.00</del>
 
                                 </span>
-                            
-                               <form action="" method="post">        
+
+                                <form action="" method="post">
                                 <div class="quantity">
 
                                     <h6 class="quantity-title">Quantity:</h6>
 
                                     <div class="buttons-added">
 
-                                        <input type="text" value="1" name="qty" title="Qty" class="input-text qty text" size="1">
+                                        <input type="text" value="1" name="qty" title="Qty"  class="input-text qty text" size="1">
 
                                         <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
 
@@ -214,23 +193,21 @@
                                     </div>
 
                                 </div>
-
-                                <form action=" " method="post">
+                            
                                 <div class="single-add-to-cart">
 
-                                    <input class="btn-add-to-cart" type="submit" name="submit" value="Add to Cart"/><br>
-                                    
+                                <input class="btn-add-to-cart" type="submit" name="submit" value="Add to Cart"/><br>
 
-                                    <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
+                                    <a href="#" title="Add to compare product" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
 
-                                    <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
+                                    <a href="#" title="Add to wishlist" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
 
                                 </div>
-                                    </form>
+                                <form>
+
                             </div>
 
                         </div>
-                      
 
                     </div>
 
@@ -257,8 +234,9 @@
                         <div id="tab-1" class="tab-panel active">
 
                             <div class="box-content">
-
                                 <?php echo $row['description']?>
+                               
+
 
                             </div>
 
@@ -268,15 +246,11 @@
 
                             <div class="box-content">
 
-                            <?php echo $row['specifications']?>
+                            <?php echo $row['description']?>
 
                                 <div class="parameter">
 
-                                    <p>Overall: 40" H x 35.5" L x 35.5" W</p>
-
-                                    <p>Bar height:40"</p>
-
-                                    <p>Overall Product Weight: 88 lbs</p>
+                                    
 
                                 </div>
 
@@ -345,13 +319,11 @@
                 </div> 
 
             </div>
+<?php
+}
+}
 
-            <?php
-                    }
-                }
-                ?>
-
-
+?>
             <div class="block-recent-view">
 
                 <div class="container">
@@ -709,7 +681,4 @@
 
 		</main><!-- end MAIN -->
 
-
-
-		<!-- FOOTER -->
 <?php include('inc/footer.php')?>

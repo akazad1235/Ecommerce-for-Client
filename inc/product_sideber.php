@@ -1,11 +1,13 @@
 
 <?php // $ct = new Category()?>
 <?php
-  if (isset($_GET['catgoryId'])) {
-      $id=$_GET['catgoryId'];
- } 
-?>
-           
+  if (isset($_GET['catgoryId'])){   
+       $id=$_GET['catgoryId'];
+ }  
+  if (isset($_GET['PdId'])){   
+      $id2=$_GET['PdId'];
+ }  
+?>    
                    <div class="col-md-3 col-sm-4">
 
                         <div class="col-sidebar">
@@ -27,17 +29,33 @@
                     <?php
                        
                                 
-                    $catList=$ct->allCatList($id);
-                    if (!$catList) {
-                        echo "Category Select Faild";
-                    }else{
-                        while($row=$catList->fetch_assoc()){?>   
-                        <li>
-                       <label class="inline" ><a href="#" cId="<?php echo $row['brandId']?>"><?php echo $row['brand_name']?></a><span >(<?php echo $row['total']?>)</span></label>
-                       </li>
-                       <?php 
+                   
+                    if (isset($id) ) {
+                        $catList=$ct->allCatList($id);
+                        if (!$catList) {
+                            echo "Category Select Faild 1";
+                        }else{
+                            while($row=$catList->fetch_assoc()){?>   
+                            <li>
+                           <label class="inline" ><a href="?PdId=<?php echo $row['brandId']?>"><?php echo $row['brand_name']?></a><span >(<?php echo $row['total']?>)</span></label>
+                           </li>
+                           <?php 
+                            }
                         }
-                    }
+                    }   else{
+                        $catList=$ct->allCatList2($id2);
+                        if (!$catList) {
+                            echo "Category Select Faild 2";
+                        }else{
+                            while($row=$catList->fetch_assoc()){?>   
+                            <li>
+                           <label class="inline" ><a href="?PdId=<?php echo $row['brandId']?>"><?php echo $row['brand_name']?></a><span >(<?php echo $row['total']?>)</span></label>
+                           </li>
+                           <?php 
+                            }
+                        }  
+                    } 
+                
                     
                     ?>
                    </ul>

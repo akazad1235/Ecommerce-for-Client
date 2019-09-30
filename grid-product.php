@@ -2,10 +2,14 @@
 <!-- end HEADER -->        
 
 <?php
-if (isset($_GET['catgoryId'])) {
-    $catId=$_GET['catgoryId'];
+ if (isset($_GET['catgoryId'])) {
+     $catId=$_GET['catgoryId'];
+}
+if (isset($_GET['PdId'])){
+     $catId2=$_GET['PdId'];
 }
 ?>
+
 
         <!-- MAIN -->
 
@@ -92,10 +96,151 @@ if (isset($_GET['catgoryId'])) {
                             </div>
 
                             
+                            <div class="products products-list products-grid equal-container">
+<?php
+    if (isset($catId)) {   
+    $getCatWisePro=$pd->getCategoryWisePd($catId);
+    if ($getCatWisePro){
+        while($row=$getCatWisePro->fetch_assoc()){?>
+<div class="product-item style1 width-33 padding-0 col-md-3 col-sm-6 col-xs-6 equal-elem">
+   
 
-                            <div id="Get_product">  
-                            
-                        </div>
+    <div class="product-inner">
+        <div class="product-thumb">
+            <div class="thumb-inner">
+
+                <a href="detail.php?proDetaildId=<?php echo $row['id']?>"><img src="admin/<?php echo $row['image']?>" alt="p8"></a>
+
+            </div>
+
+            <span class="onsale">-50%</span>
+
+            <a href="#" class="quick-view">Quick View</a>
+
+        </div>
+
+        <div class="product-innfo">
+
+            <div class="product-name"><a href="detail.php?proDetaildId=<?php echo $row['id']?>"><?php echo $row['product_name']?></a></div>
+
+            <span class="price">
+
+                <ins>৳<?php echo $row['price']?></ins>
+
+                <del>$259.00</del>
+
+            </span>
+
+            <span class="star-rating">
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <span class="review">5 Review(s)</span>
+
+            </span>
+
+
+            <div class="single-add-to-cart">
+
+                <a href="#" class="btn-add-to-cart">Add to cart</a>
+
+                <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
+
+                <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
+
+            </div>
+
+        </div>
+ 
+   
+</div>
+     
+    </div> 
+    <?php
+        }
+    }
+}else{
+    $getCatWisePro=$pd->getCategoryWisePd2($catId2);
+    if ($getCatWisePro){
+        while($row=$getCatWisePro->fetch_assoc()){?>
+<div class="product-item style1 width-33 padding-0 col-md-3 col-sm-6 col-xs-6 equal-elem">
+   
+
+    <div class="product-inner">
+ 
+        <div class="product-thumb">
+
+            <div class="thumb-inner">
+
+                <a href="#"><img src="admin/<?php echo $row['image']?>" alt="p8"></a>
+
+            </div>
+
+            <span class="onsale">-50%</span>
+
+            <a href="#" class="quick-view">Quick View</a>
+
+        </div>
+
+        <div class="product-innfo">
+
+            <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
+
+            <span class="price">
+
+                <ins>৳<?php echo $row['price']?></ins>
+
+                <del>৳259.00</del>
+
+            </span>
+
+            <span class="star-rating">
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <span class="review">5 Review(s)</span>
+            </span>
+
+            <div class="single-add-to-cart">
+
+                <a href="#" class="btn-add-to-cart">Add to cart</a>
+
+                <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
+
+                <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
+
+            </div>
+
+        </div>
+ 
+   
+</div>
+     
+    </div> 
+    <?php
+        }
+    }
+}
+
+    ?>   
+</div>
+
              
 
                             <div class="pagination">

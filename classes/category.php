@@ -94,12 +94,25 @@
 
         //all catetgory list for user site
         public function allCatList($id){
-            $query="SELECT tbl_brand.brand_name,tbl_product.brandId, count(tbl_product.brandId) as total from tbl_brand 
+            $query="SELECT tbl_brand.brand_name,tbl_product.brandId,tbl_product.cat, count(tbl_product.brandId) as total from tbl_brand 
                 INNER JOIN tbl_product 
                 on tbl_brand.id=tbl_product.brandId
                 INNER JOIN tbl_category
                 on tbl_category.catId=tbl_product.cat
                 where tbl_category.cat_name='$id'
+                group by tbl_product.brandId
+                order by tbl_product.id desc"; 
+                
+                $result=$this->db->select($query);
+               return $result;
+        }
+        public function allCatList2($id2){
+            $query="SELECT tbl_brand.brand_name,tbl_product.brandId, count(tbl_product.brandId) as total from tbl_brand 
+                INNER JOIN tbl_product 
+                on tbl_brand.id=tbl_product.brandId 
+                INNER JOIN tbl_category
+                on tbl_category.catId=tbl_product.cat
+                where tbl_product.brandId='$id2' or tbl_category.catId=tbl_product.cat
                 group by tbl_product.brandId
                 order by tbl_product.id desc"; 
                 
