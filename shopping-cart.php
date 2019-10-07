@@ -27,11 +27,10 @@
         echo $delCart;
     }
     ?>
-   
-                
-                
-                
-        
+
+
+
+ 
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
@@ -54,6 +53,7 @@
                    $getCart=$cart->getAllCart();
                    if ($getCart) {
                     $sum=0;
+                    $qty=0;
                    while ($row=$getCart->fetch_assoc()) {?>
                         
                  
@@ -64,7 +64,7 @@
                                         <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
                                     </td>
                                     <td class="tb-price">
-                                        <span class="price">$<?php echo $row['price']?></span>
+                                        <span class="price">৳<?php echo $row['price']?></span>
                                     </td>
 
                                     <form action=""  method="post">
@@ -86,25 +86,26 @@
                                         <button  type="submit" name="submit" class="action-remove" title="Update your Cart"><span><i class="fa fa-edit" aria-hidden="true"></i></span></button>
                                     </td>
                                   </form>
-                                    <td class="tb-total">
+                                    
+
+                                  <td class="tb-total">
                                         <span class="price">
                                         <?php
                                              $total=$row['price'] * $row['qty'];
-                                            echo "$".$total;
+                                            echo '৳'.$total;
                                             ?>
                                         </span>
                                     </td>
                                     <td class="tb-remove">
                                         <a  href="?catDltId=<?php echo $row['cartId']?>" class="action-remove" title="Update your Cart"><button><span><i class="fa fa-times" aria-hidden="true"></i></span></button></a>
                                     </td>
-
-                                    
                                     
                                 </tr>
                             <?php
+                            $qty=$qty+$row['qty'];
                             $sum=$sum+$total;
-                            //cpy
-
+                            Session::set("qty", $qty);
+                            Session::set("sum", $sum);
                    }?>
               
                            
@@ -141,9 +142,9 @@
                                 <li><label class="inline"><input type="checkbox"><span class="input"></span>I have promo
                                     code</label></li>
                             </ul>
-                            <button type="submit" class="btn-checkout">
+                            <a href="checkout.php"><button  type="submit" class="btn-checkout">
                                 <span>Check Out</span>
-                            </button>
+                            </button></a>
                         </div>
                     </div>
                 </div>

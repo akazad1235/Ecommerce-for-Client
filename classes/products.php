@@ -273,6 +273,41 @@
                return $result;
 
              }
+
+             //latest product for user panel
+             public function getLatestPro(){
+
+                $query="SELECT * FROM tbl_product order by id desc limit 4 ";
+                $result=$this->db->select($query);
+                return $result;
+
+             }
+             //latest product for user panel
+             public function getLatestPro2(){
+
+                $query="SELECT * FROM tbl_product order by id desc limit 4, 8 ";
+                $result=$this->db->select($query);
+                return $result;
+
+             }
+
+             //crate for get cat id
+             public function getCatId($catId){
+                $query="SELECT * FROM tbl_product where id='$catId'";
+                $result=$this->db->select($query);
+                return $result;
+            }
+            //create for related product
+            public function relatedProducts($catIds){
+                $query="SELECT * FROM tbl_product where cat='$catIds' order by rand()";
+                $result=$this->db->select($query);
+                return $result;
+            }
+            public function interestedPd(){
+                $query="SELECT * FROM tbl_product order by rand()";
+                $result=$this->db->select($query);
+                return $result;
+            }
              
   
         

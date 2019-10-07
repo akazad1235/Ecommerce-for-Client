@@ -124,63 +124,6 @@
                                         </div>
 
                                     </div>
-
-                                    <div class="filter-options-item filter-size">
-
-                                        <div class="filter-options-title">Size</div>
-
-                                        <div class="filter-options-content">
-
-                                            <ul>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input">S</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input">M</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input">L</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input">XL</span></label></li>
-
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="filter-options-item filter-color">
-
-                                        <div class="filter-options-title">Color</div>
-
-                                        <div class="filter-options-content">
-
-                                            <ul>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Red<span class="value">(217)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Black<span class="value">(79)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Grey<span class="value">(116)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>While<span class="value">(38)</span></label></li>
-
-                                            </ul>
-
-                                            <ul>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Yellow<span class="value">(179)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Blue<span class="value">(283)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Pink<span class="value">(29)</span></label></li>
-
-                                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Green<span class="value">(205)</span></label></li>
-
-                                            </ul>
-
-                                        </div>
-
-                                    </div>
-
                                 </div>
 
                             </div>
@@ -198,8 +141,15 @@
                                 <div class="block-latest-roducts-content">
 
                                     <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
+                                    
                                         <div class="owl-ones-row">
+                                     
 
+                                       <?php
+                                     //latest product for sideber
+                                    $getLatestP=$pd->getLatestPro();
+                                    if ($getLatestP) {
+                                        while($row=$getLatestP->fetch_assoc()){?>
                                             <div class="product-item style1">
 
                                                 <div class="product-inner">
@@ -208,7 +158,7 @@
 
                                                         <div class="thumb-inner">
 
-                                                            <a href="#"><img src="assets/images/blog/p1.jpg" alt="p1"></a>
+                                                            <a href="detail.php?proDetaildId=<?php echo $row['id']?>"><img style='width:50px' src="admin/<?php echo $row['image']?>" alt="p4"></a>
 
                                                         </div>
 
@@ -216,150 +166,13 @@
 
                                                     <div class="product-innfo">
 
-                                                        <div class="product-name"><a href="#">Leather Chelsea Boots</a></div>
+                                   <div class="product-name"><a href="detail.php?proDetaildId=<?php echo $row['id']?>"><?php echo $row['product_name']?></a></div>
 
                                                         <span class="price">
 
-                                                            <ins>$229.00</ins>
+                                                            <ins>৳<?php  echo $row['price']?></ins>
 
-                                                            <del>$259.00</del>
-
-                                                        </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p2.jpg" alt="p2"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">2750 Cotu Classic Sneakers</a></div>
-
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p3.jpg" alt="p3"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                        <span class="price price-dark">
-
-                                                                <ins>$229.00</ins>
-
-                                                            </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p4.jpg" alt="p4"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">Pullover Hoodie - Mens</a></div>
-
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
+                                                            <del>৳259.00</del>
 
                                                         </span>
 
@@ -384,10 +197,23 @@
                                                 </div>
 
                                             </div>
-                                        </div>
+                                             <?php
+                                        }
+                                    }
+
+                                     ?>
+                                        </div> 
 
                                         <div class="owl-ones-row">
-
+                                        
+                                         <?php
+                                         //latest product for sideber
+                                        $getLatestP=$pd->getLatestPro2();
+                                        if ($getLatestP) {
+                                            while($row=$getLatestP->fetch_assoc()){?>
+                                        
+                                           
+                                            
                                             <div class="product-item style1">
 
                                                 <div class="product-inner">
@@ -396,7 +222,7 @@
 
                                                         <div class="thumb-inner">
 
-                                                            <a href="#"><img src="assets/images/blog/p1.jpg" alt="p1"></a>
+                                                            <a href="detail.php?proDetaildId=<?php echo $row['id']?>"><img  style='width:50px' src="admin/<?php echo $row['image']?>" alt="p4"></a>
 
                                                         </div>
 
@@ -404,148 +230,11 @@
 
                                                     <div class="product-innfo">
 
-                                                        <div class="product-name"><a href="#">Leather Chelsea Boots</a></div>
+                                                        <div class="product-name"><a href="detail.php?proDetaildId=<?php echo $row['id']?>"><?php echo $row['product_name']?></a></div>
 
                                                         <span class="price">
 
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p2.jpg" alt="p2"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">2750 Cotu Classic Sneakers</a></div>
-
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
-
-                                                            <del>$259.00</del>
-
-                                                        </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p3.jpg" alt="p3"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                        <span class="price price-dark">
-
-                                                                <ins>$229.00</ins>
-
-                                                            </span>
-
-                                                        <span class="star-rating">
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                            <span class="review">5 Review(s)</span>
-
-                                                        </span>
-
-                                                    </div>    
-
-                                                </div>
-                                            </div>
-
-                                            <div class="product-item style1">
-
-                                                <div class="product-inner">
-
-                                                    <div class="product-thumb">
-
-                                                        <div class="thumb-inner">
-
-                                                            <a href="#"><img src="assets/images/blog/p4.jpg" alt="p4"></a>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="product-innfo">
-
-                                                        <div class="product-name"><a href="#">Pullover Hoodie - Mens</a></div>
-
-                                                        <span class="price">
-
-                                                            <ins>$229.00</ins>
+                                                            <ins>৳<?php echo $row['price']?></ins>
 
                                                             <del>$259.00</del>
 
@@ -572,9 +261,16 @@
                                                 </div>
 
                                             </div>
+                                            <?php
+                                        }
+                                    }
+
+                                     ?>
                                         </div>
 
                                     </div>
+
+                                    
 
                                 </div>
 

@@ -109,6 +109,13 @@
                    <?php
                     }
                 }
+
+                 public function checkCartTable(){
+                    $sId=session_id();
+                    $query="SELECT *  from tbl_cart where sessionId='$sId'";
+                    $result=$this->db->select($query);
+                    return $result;
+                } 
              
 
 }

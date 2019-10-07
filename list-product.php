@@ -1,9 +1,15 @@
 <?php include('inc/header.php')?>
 <!-- end HEADER -->        
 
-
-
         <!-- MAIN -->
+        <?php
+ if (isset($_GET['catgoryId'])) {
+     $catId=$_GET['catgoryId'];
+}
+if (isset($_GET['PdId'])){
+     $catId2=$_GET['PdId'];
+}
+?>
 
         <main class="site-main product-list">
 
@@ -69,13 +75,13 @@
 
                                     <div class="modes">
 
-                                        <a href="grid-product.html" class="modes-mode  mode-grid" title="Grid"><i class="flaticon-squares"></i>
+                                        <a href="grid-product.php?catgoryId=<?php echo $catId?>" class="modes-mode  mode-grid" title="Grid"><i class="flaticon-squares"></i>
 
                                             <span>Grid</span>
 
                                         </a>
 
-                                        <a href="list-product.html" title="List" class="active modes-mode mode-list"><i class="flaticon-interface"></i>
+                                        <a href="list-product.php?catgoryId=<?php echo $catId?>" title="List" class="active modes-mode mode-list"><i class="flaticon-interface"></i>
 
                                             <span>List</span>
 
@@ -88,68 +94,67 @@
                             </div>
 
                             <div class="products products-list">
+                            <?php
+    if (isset($catId)) {   
+    $getCatWisePro=$pd->getCategoryWisePd($catId);
+    if ($getCatWisePro){
+        while($row=$getCatWisePro->fetch_assoc()){?>
+<div class="product-items">
 
-                                <div class="product-items">
+<div class="product-image">
 
-                                    <div class="product-image">
+    <a href="#"><img src="admin/<?php echo $row['image']?>" alt="p7"></a>
 
-                                        <a href="#"><img src="assets/images/product/p1.jpg" alt="p1"></a>
+    <a href="#" class="quick-view">Quick View</a>
 
-                                        <span class="onsale">-50%</span>
+</div>
 
-                                        <a href="#" class="quick-view">Quick View</a>
+<div class="product-info">
 
-                                    </div>
+    <div class="product-name"><a href="#"><?php echo $row['product_name']?></a></div>
 
-                                    <div class="product-info">
+    <span class="star-rating">
 
-                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable laptop</a></div>
+        <i class="fa fa-star" aria-hidden="true"></i>
 
-                                        <span class="star-rating">
+        <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+        <span class="review">5 Review(s)</span>
 
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+    </span>
 
-                                            <span class="review">5 Review(s)</span>
+    <div class="product-infomation">
 
-                                        </span>
+        <?php echo $row['description']?>
 
-                                        <div class="product-infomation">
+    </div>
 
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
+</div>
 
-                                            Display type:  Full 1080 Color<br>
+<div class="product-info-price">
 
-                                            Chip set: Core i7<br>
+    <div class="product-info-stock-sku">
 
-                                            Color:  White
+        <div class="stock available">
 
-                                        </div>
+            <span class="label-stock">Avability:</span> In Stock
 
-                                    </div>
+        </div>
 
-                                    <div class="product-info-price">
 
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
+       
+                                
                                         </div>
 
                                         <span class="price">
 
-                                            <ins>$229.00</ins>
+                                            <ins>৳<?php echo $row['price']?></ins>
 
                                             <del>$259.00</del>
 
@@ -168,478 +173,10 @@
                                     </div>
 
                                 </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p2.jpg" alt="p2"></a>
-
-                                        <span class="onnew">new</span>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">Smartphone MTK6737 Quad Core.</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price price-dark">
-
-                                            <ins>$229.00</ins>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p3.jpg" alt="p3"></a>
-
-                                        <span class="onnew">new</span>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">BOSS AUDIO MCBK400 All-Terrain 600-Watt Whute Audio</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price price-dark">
-
-                                            <ins>$229.00</ins>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p4.jpg" alt="p4"></a>
-
-                                        <span class="onsale">-50%</span>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">Smart Watch SERIE 2 (42mm) Silver Case with White Sport</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p5.jpg" alt="p5"></a>
-
-                                        <span class="onsale">-50%</span>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable laptop</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p6.jpg" alt="p6"></a>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable laptop</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-items">
-
-                                    <div class="product-image">
-
-                                        <a href="#"><img src="assets/images/product/p7.jpg" alt="p7"></a>
-
-                                        <a href="#" class="quick-view">Quick View</a>
-
-                                    </div>
-
-                                    <div class="product-info">
-
-                                        <div class="product-name"><a href="#">Acer's Aspire S7 is a thin and portable laptop</a></div>
-
-                                        <span class="star-rating">
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-
-                                            <span class="review">5 Review(s)</span>
-
-                                        </span>
-
-                                        <div class="product-infomation">
-
-                                            14’’ Class 15.6’’ Screen full offer supperior picture LED<br>
-
-                                            Display type:  Full 1080 Color<br>
-
-                                            Chip set: Core i7<br>
-
-                                            Color:  White
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="product-info-price">
-
-                                        <div class="product-info-stock-sku">
-
-                                            <div class="stock available">
-
-                                                <span class="label-stock">Avability:</span> In Stock
-
-                                            </div>
-
-                                        </div>
-
-                                        <span class="price">
-
-                                            <ins>$229.00</ins>
-
-                                            <del>$259.00</del>
-
-                                        </span>
-
-                                        <div class="single-add-to-cart">
-
-                                            <a href="#" class="btn-add-to-cart">Add to cart</a>
-
-                                            <a href="#" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                            <a href="#" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                <?php
+        }
+    }
+}?>
 
                             </div>
 

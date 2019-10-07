@@ -30,11 +30,8 @@ Session::init();
     <link rel="stylesheet" type="text/css" href="assets/css/pe-icon-7-stroke.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css">
-
     <link rel="stylesheet" type="text/css" href="assets/css/chosen.css">
-
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.bxslider.css">
-    <script type="text/javascript" src="js/ajax.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -271,8 +268,15 @@ Session::init();
                                     <span class="counter qty">
 
                                         <span class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+                                       
+                                        <span class="counter-number" id="cart-count">
+                                            <?php
+                                            $qty=Session::get('qty');
+                                            echo $qty; 
+                                            ?>
+                                        </span>
                                         
-                                        <span class="counter-number" id="cart-count">1</span>
+
 
                                     </span>
 
@@ -280,7 +284,18 @@ Session::init();
 
                                         <span class="counter-label">Your Cart:</span>
 
-                                        <span class="counter-price">$00.00</span>
+                                        <span class="counter-price">
+                                            <?php
+                                            
+                                            $getData=$cart->checkCartTable();
+                                            if ($getData) {
+                                                $sum=Session::get('sum');
+                                                echo '৳'.$sum; 
+                                            }else{
+                                                echo "empty";
+                                            }
+                                            ?>
+                                        </span>
 
                                     </span>
 

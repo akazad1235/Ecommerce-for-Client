@@ -640,7 +640,7 @@ input[type=password] {
 .owl-carousel.nav-style5 .owl-prev:hover,
 .owl-carousel.nav-style5 .owl-next:hover {
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	color: #fff;
 	
@@ -2518,7 +2518,7 @@ input[type=password] {
 	
 	text-transform: uppercase;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	border-radius: 30px;
 	
@@ -3247,7 +3247,7 @@ input[type=password] {
 	color: #333;
 	
 	position: relative;
-	border-left: 3px solid #f33c3c;
+	border-left: 3px solid #149D4F;
 	padding-left: 14px;
 }
 .block-section-5 .tab-content {
@@ -3323,7 +3323,7 @@ input[type=password] {
 	
 	font-size: 18px;
 	
-	color: #f33c3c;
+	color: #149D4F;
 	
 	font-family: 'Roboto', sans-serif;
 	
@@ -3506,9 +3506,9 @@ input[type=password] {
 	
 	color: #fff;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
-	border-color: #f33c3c;
+	border-color: #149D4F;
 	
 }
 .block-daily-deals.style2 {
@@ -4939,12 +4939,13 @@ input[type=password] {
 	
 	margin-bottom: 7px;
 	
-	color: #666;
+	color: #222;
 	
 }
 .links li a:hover {
 	
-	color: #f33c3c;
+	color: #149D4F;
+	text-decoration:underline;
 	
 }
 .footer-bottom .links {
@@ -5979,7 +5980,7 @@ input[type=password] {
 
 .footer-opt-2 .footer-top {
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 	margin-top: 50px;
 	
@@ -6092,7 +6093,7 @@ input[type=password] {
 	
 	color: #fff;
 	
-	background-color: #f33c3c;
+	background-color: #149D4F;
 	
 }
 .footer-opt-2 .contacts .contacts-info {
